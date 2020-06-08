@@ -1,6 +1,8 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { getTokenUser } from '../../actions/a-token';
+import PropTypes from 'prop-types';
+
 
 class Login extends Component {
   componentDidMount() {
@@ -11,21 +13,25 @@ class Login extends Component {
     return (
       <div>
         <header>
-          <label>Email Gravatar
-            <input data-testid="input-gravatar-email" type='email' />
+          <label htmlFor="input-gravatar-email">Email Gravatar
+            <input data-testid="input-gravatar-email" type="email" />
           </label>
-          <label> Nome do Jogador
-            <input data-testid="input-player-name" type='Text' />
+          <label htmlFor="input-player-name"> Nome do Jogador
+            <input data-testid="input-player-name" type="text" />
           </label>
           <button data-testid="btn-play">Jogar</button>
         </header>
       </div>
-    )
+    );
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
   requestApiToken: () => dispatch(getTokenUser()),
 });
+
+Login.propTypes = {
+  requestApiToken: PropTypes.func.isRequired,
+};
 
 export default connect(null, mapDispatchToProps)(Login)

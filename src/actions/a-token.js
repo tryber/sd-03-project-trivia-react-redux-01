@@ -6,7 +6,7 @@ export const REQUEST_API = 'Request Api';
 const getToken = (token) => ({
   type: GET_TOKEN,
   token,
-})
+});
 
 const requestApi = () => ({
   type: REQUEST_API,
@@ -17,6 +17,6 @@ export function getTokenUser() {
     dispatch(requestApi());
 
     return requestApiTrivia()
-      .then(data => dispatch(getToken(data)))
-  }
+      .then((data) => dispatch(getToken(data)));
+  };
 }
