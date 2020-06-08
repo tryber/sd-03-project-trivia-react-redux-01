@@ -34,4 +34,4 @@ Login.propTypes = {
   requestApiToken: PropTypes.func.isRequired,
 };
 
-export default connect(null, mapDispatchToProps)(Login)
+export default connect(null, mapDispatchToProps)(Login);
