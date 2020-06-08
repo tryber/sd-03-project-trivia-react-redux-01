@@ -3,6 +3,6 @@ import tokenUser from '../reducers/r-fetchtoken'
 
 const rootReducers = combineReducers({
   tokenUser,
-  }); 
+});
 
-  export default rootReducers;
+export default rootReducers;

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getTokenUser } from '../../actions/a-token';
 
-
 class Login extends Component {
   componentDidMount() {
     const { requestApiToken } = this.props;
@@ -13,11 +12,12 @@ class Login extends Component {
       <div>
         <header>
           <label>Email Gravatar
-            <input type='email' />
+            <input data-testid="input-gravatar-email" type='email' />
           </label>
-          <label>
-            <input type='Text' />
+          <label> Nome do Jogador
+            <input data-testid="input-player-name" type='Text' />
           </label>
+          <button data-testid="btn-play">Jogar</button>
         </header>
       </div>
     )

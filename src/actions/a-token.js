@@ -10,14 +10,13 @@ const getToken = (token) => ({
 
 const requestApi = () => ({
   type: REQUEST_API,
-  });
+});
 
 export function getTokenUser() {
   return (dispatch) => {
-    dispatch(requestApi()); 
+    dispatch(requestApi());
 
     return requestApiTrivia()
       .then(data => dispatch(getToken(data)))
   }
 }
-
