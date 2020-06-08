@@ -20,7 +20,7 @@ const tokenUser = (state = INITIAL_STATE, action) => {
       };
     default:
       return state;
-  };
+  }
 };
 
 export default tokenUser;

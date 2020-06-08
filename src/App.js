@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Login from '../src/components/screen-login/Login'
+import Login from '../src/components/screen-login/Login';
 
 export default function App() {
   return (
