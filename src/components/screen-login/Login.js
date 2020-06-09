@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getTokenUser } from '../../actions/a-token';
+import { getTokenUser, getToken } from '../../actions/a-token';
 
 
 class Login extends Component {
@@ -15,14 +16,24 @@ class Login extends Component {
       <div>
         <header>
           <label htmlFor="input-gravatar-email">Email Gravatar
-            <input data-testid="input-gravatar-email" type="email" />
+            <input data-testid="input-gravatar-email" type="email" required />
           </label>
           <label htmlFor="input-player-name"> Nome do Jogador
-            <input data-testid="input-player-name" type="text" />
+            <input data-testid="input-player-name" type="text" required />
           </label>
-          <button data-testid="btn-play">Jogar</button>
+          <Link>
+            <button data-testid="btn-settings">Configurações</button>
+          </Link>
+          <Link to="/game">
+            <button
+              type="button"
+              data-testid="btn-play"
+              onClick={() => getToken()}
+            >Jogar
+             </button>
+          </Link>
         </header>
-      </div>
+      </div >
     );
   }
 }
