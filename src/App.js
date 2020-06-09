@@ -4,7 +4,7 @@ import './App.css';
 
 import Login from '../src/components/screen-login/Login';
 import Hanking from './components/sreen-hanking/Hanking';
-import Game from './components/screen-game/Trivia';
+import Game from './components/screen-game/Trivia.jsx';
 
 export default function App() {
   return (

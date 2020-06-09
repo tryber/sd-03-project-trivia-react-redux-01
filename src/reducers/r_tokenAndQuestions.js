@@ -1,11 +1,12 @@
-import { GET_TOKEN, REQUEST_API } from '../actions/a-token';
+import { GET_TOKEN, REQUEST_API, GET_QUESTIONS } from '../actions/a-token';
 
 const INITIAL_STATE = {
+  data: [],
   token: '',
   isFetching: false,
 };
 
-const tokenUser = (state = INITIAL_STATE, action) => {
+const tokenAndQuestions = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case REQUEST_API:
       return {
@@ -18,9 +19,14 @@ const tokenUser = (state = INITIAL_STATE, action) => {
         token: action.token,
         isFetching: false,
       };
+      case GET_QUESTIONS:
+        return {
+          ...state,
+          data: action.data,
+        }
     default:
       return state;
   }
 };
 
-export default tokenUser;
+export default tokenAndQuestions;

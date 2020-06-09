@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import tokenUser from '../reducers/r-fetchtoken';
+import tokenAndQuestions from '../reducers/r_tokenAndQuestions';
 
 const rootReducers = combineReducers({
-  tokenUser,
+  tokenAndQuestions,
 });
 
 export default rootReducers;
