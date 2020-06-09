@@ -19,7 +19,7 @@ class Hanking extends Component {
           <ul>
             <li>{img}</li>
             <li>{name}</li>
-            <li data-testid="player-score-${index}">{ponts}</li>
+            <li data-testid="player-score-index">{ponts}</li>
           </ul>
         ))}
       </div>
