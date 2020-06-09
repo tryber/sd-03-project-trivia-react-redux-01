@@ -1,7 +1,7 @@
 import requestApiTrivia from '../Fetchrequest/Fetch-api-trivia';
 
-export const GET_TOKEN = 'Get token from api';
-export const REQUEST_API = 'Request Api';
+export const REQUEST_API = 'REQUEST_API';
+export const GET_TOKEN = 'GET_TOKEN_FROM_API';
 
 const getToken = (token) => ({
   type: GET_TOKEN,
