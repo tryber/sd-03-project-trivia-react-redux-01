@@ -13,7 +13,7 @@ class Login extends Component {
       const questions = await this.props.requestApiQuestions();
       localStorage.setItem('token', token.token);
       console.log(questions);
-    }
+    };
     return (
       <div>
         <header>
@@ -50,8 +50,8 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 Login.propTypes = {
-  requestApiToken: PropTypes.func.isRequired,
+  // requestApiToken: PropTypes.func.isRequired,
   requestApiQuestions: PropTypes.func.isRequired,
 };
 
-export default connect(mapState, mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(Login);
