@@ -31,4 +31,4 @@ Feedback.propTypes = {
   score: PropTypes.number.isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Feedback);
+export default connect(mapStateToProps)(Feedback);
