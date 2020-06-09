@@ -3,7 +3,7 @@ import requestApiTrivia from '../Fetchrequest/Fetch-api-trivia';
 export const REQUEST_API = 'REQUEST_API';
 export const GET_TOKEN = 'GET_TOKEN_FROM_API';
 
-const getToken = (token) => ({
+export const getToken = (token) => ({
   type: GET_TOKEN,
   token,
 });
@@ -17,6 +17,6 @@ export function getTokenUser() {
     dispatch(requestApi());
 
     return requestApiTrivia()
-      .then((data) => dispatch(getToken(data)));
+      .then((data) => dispatch(getToken(data.token)));
   };
 }
