@@ -10,6 +10,7 @@ class Login extends Component {
     console.log(this.props)
     requestApiToken();
   }
+
   render() {
     return (
       <div>
