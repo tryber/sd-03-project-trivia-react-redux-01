@@ -14,8 +14,8 @@ export class Feedback extends Component {
         {num <= 3 ? <h1>Podia ser melhor...</h1> : <h1>Mandou bem!</h1>}
         {`Você acertou ${num} questões!
           Um total de ${score} pontos!`}
-          <button>VER RANKING</button>
-          <button>JOGAR NOVAMENTE</button>
+        <button>VER RANKING</button>
+        <button>JOGAR NOVAMENTE</button>
       </div>
     );
   }
@@ -24,10 +24,11 @@ export class Feedback extends Component {
 const mapStateToProps = (state) => ({
   correct: state.correct,
   score: state.score,
-})
+});
 
-const mapDispatchToProps = {
-  
-}
+Feedback.propTypes = {
+  correct: PropTypes.number.isRequired,
+  score: PropTypes.number.isRequired,
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Feedback)
+export default connect(mapStateToProps, mapDispatchToProps)(Feedback);

@@ -7,7 +7,6 @@ import { getTokenUser } from '../../actions/a-token';
 class Login extends Component {
   componentDidMount() {
     const { requestApiToken } = this.props;
-    console.log(this.props)
     requestApiToken();
   }
 
