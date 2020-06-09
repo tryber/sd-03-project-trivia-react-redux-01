@@ -9,6 +9,7 @@ class Login extends Component {
     const { requestApiToken } = this.props;
     requestApiToken();
   }
+
   render() {
     return (
       <div>
