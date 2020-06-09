@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getTokenUser, getToken } from '../../actions/a-token';
-import { Link } from 'react-router-dom';
 
 
 class Login extends Component {
@@ -25,7 +25,8 @@ class Login extends Component {
             <button data-testid="btn-settings">Configurações</button>
           </Link>
           <Link to="/game">
-            <button type='button'
+            <button
+              type="button"
               data-testid="btn-play"
               onClick={() => getToken()}
             >Jogar
