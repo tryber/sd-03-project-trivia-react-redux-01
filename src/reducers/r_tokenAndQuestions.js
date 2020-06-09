@@ -19,11 +19,11 @@ const tokenAndQuestions = (state = INITIAL_STATE, action) => {
         token: action.token,
         isFetching: false,
       };
-      case GET_QUESTIONS:
-        return {
-          ...state,
-          data: action.data,
-        }
+    case GET_QUESTIONS:
+      return {
+        ...state,
+        data: action.data,
+      };
     default:
       return state;
   }

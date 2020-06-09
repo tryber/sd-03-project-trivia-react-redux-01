@@ -2,22 +2,18 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import './layout/Login.css'
-import { getTokenUser,getResultsQuestions } from '../../actions/a-token';
-
-
+import './layout/Login.css';
+import { getTokenUser, getResultsQuestions } from '../../actions/a-token';
 
 class Login extends Component {
-  
+
   render() {
-    const { data } = this.props;
-    console.log(data)
     const tokenPlayer = async () => {
       const token = await this.props.requestApiToken();
       const questions = await this.props.requestApiQuestions();
       localStorage.setItem('token', token.token);
+      console.log(questions);
     }
-
     return (
       <div>
         <header>
@@ -44,9 +40,9 @@ class Login extends Component {
   }
 }
 
-const mapState = (state) => ({
-  data: state.tokenAndQuestions.data,
-});
+// const mapState = (state) => ({
+//   data: state.tokenAndQuestions.data,
+// });
 
 const mapDispatchToProps = (dispatch) => ({
   requestApiToken: () => dispatch(getTokenUser()),
@@ -55,6 +51,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 Login.propTypes = {
   requestApiToken: PropTypes.func.isRequired,
+  requestApiQuestions: PropTypes.func.isRequired,
 };
 
 export default connect(mapState, mapDispatchToProps)(Login);

@@ -13,7 +13,7 @@ export const getToken = (token) => ({
 export const getResults = (data) => ({
   type: GET_QUESTIONS,
   data,
-})
+});
 
 const requestApi = () => ({
   type: REQUEST_API,

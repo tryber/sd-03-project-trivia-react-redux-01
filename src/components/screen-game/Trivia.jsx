@@ -8,11 +8,11 @@ class Game extends Component {
     return (
       <div>
         <div>
-          {data.map((e,i) => (
-            <p key={i}>{e.category}</p>
+          {data.map((e) => (
+            <p key={e.category}>{e.category}</p>
           ))}
-          <p data-testid="question-category"></p>
-          <p data-testid="question-text"></p>
+          <p data-testid="question-category">a</p>
+          <p data-testid="question-text">a</p>
         </div>
         <div>
           <button data-testid="correct-answer">Alternativas</button>
@@ -31,5 +31,9 @@ const mapState = (state) => ({
 // const mapDispatch = (dispatch) => ({
 //  data: () => dispatch(getResultsQuestions()),
 // });
+
+Game.propTypes = {
+  data: PropTypes.arrayOf((PropTypes.object).isRequired)
+};
 
 export default connect(mapState)(Game);
