@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const xablau = [
   'imagem',
-]
+];
 
 class Hanking extends Component {
   render() {
@@ -15,15 +15,13 @@ class Hanking extends Component {
             Início
         </button>
         </Link>
-        {xablau.map((img, name, ponts) => {
-          return (
-            <ul>
-              <li>{img}</li>
-              <li>{name}</li>
-              <li data-testid="player-score-`${index}`">{ponts}</li>
-            </ul>
-          );
-        })}
+        {xablau.map((img, name, ponts) => (
+          <ul>
+            <li>{img}</li>
+            <li>{name}</li>
+            <li data-testid="player-score-${index}">{ponts}</li>
+          </ul>
+        ))}
       </div>
     );
   }
