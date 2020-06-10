@@ -1,23 +1,15 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
-const timer = () => {
-  setInterval(() => {
-    "tempo"
-    console.log("tempo")
-  },1000)
-}
 
 class Game extends Component {
 
   render() {
     const { data } = this.props;
-    console.log('perguntas', data);
+    console.log('perguntas', data[1]);
     return (
       <div>
-        <button onClick={() => timer()}>Testar timer</button>
         <div>
           {data.map((e, i) => (
             <div>

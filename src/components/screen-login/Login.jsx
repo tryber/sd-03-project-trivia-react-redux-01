@@ -15,6 +15,10 @@ const timer = () => {
   }, 1000)
 }
 
+const questionsPoints = (time, dificulty, a = 10 ) => {
+  return a + (time * dificulty)
+}
+
 
 class Login extends Component {
   

@@ -11,11 +11,11 @@ class Hanking extends Component {
     return (
       <div className="card">
         <h1>Hanking</h1>
-        {xablau.map((img, name, ponts) => (
+        {xablau.map((img, name, ponts, index) => (
           <ul className="hank-list">
             <li>{img}</li>
             <li>{name}</li>
-            <li data-testid="player-score-index">{ponts}</li>
+            <li data-testid={`player-score-${index}`}>{ponts}</li>
           </ul>
         ))}
         <Link to="/home">
