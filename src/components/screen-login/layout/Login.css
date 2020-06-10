@@ -1,6 +1,49 @@
-.card {
-  background-color: lightblue;
-  border-radius: 4px;
-  margin: 50px auto;
-  width: 360px;
+.cardText {
+  background-color: white;
+  border: 1px solid black;
+  display: flex;
+  height: 300px;
+  justify-content: space-around;
+  margin-left: 500px;
+  width: 377px;
+}
+
+.boxDirection {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.boxLogin {
+  background: white;
+  border: solid 1px black;
+  display: flex;
+  height: 474px;
+  justify-content: center;
+  width: 792px;
+}
+
+.boxN {
+  background: white;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 20px;
+  justify-content: space-between;
+  width: 200px;
+}
+
+.buttonPlay {
+  background: #86d660;
+  display: flex;
+  font-size: large;
+  height: 20px;
+  margin-top: 10px;
+  width: 200px;
+}
+
+.config {
+  margin-top: 10px;
 }

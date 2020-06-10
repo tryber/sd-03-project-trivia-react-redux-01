@@ -15,26 +15,27 @@ class Login extends Component {
       console.log(questions);
     };
     return (
-      <div>
-        <header>
+      <div className="cardText">
+        <div className="boxDirection">
           <label htmlFor="input-gravatar-email">Email Gravatar
-            <input data-testid="input-gravatar-email" type="email" required />
+            <input data-testid="input-gravatar-email" className="boxN" type="email" required />
           </label>
           <label htmlFor="input-player-name"> Nome do Jogador
-            <input data-testid="input-player-name" type="text" required />
+            <input data-testid="input-player-name" className="boxN" type="text" required />
           </label>
-          <Link>
-            <button data-testid="btn-settings">Configurações</button>
-          </Link>
           <Link to="/game">
             <button
+              className="buttonPlay"
               type="button"
               data-testid="btn-play"
               onClick={() => tokenPlayer()}
             >Jogar
              </button>
           </Link>
-        </header>
+          <Link>
+            <button data-testid="btn-settings" className="config">Configurações</button>
+          </Link>
+        </div>
       </div >
     );
   }
