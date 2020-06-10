@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 class Game extends Component {
   render() {
     const { data } = this.props;
-    console.log('perguntas', data[0]);
+    console.log('perguntas', data);
     return (
       <div>
         <div>

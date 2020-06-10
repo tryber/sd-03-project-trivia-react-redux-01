@@ -49,9 +49,9 @@ const mapDispatchToProps = (dispatch) => ({
   requestApiQuestions: () => dispatch(getResultsQuestions()),
 });
 
-Login.propTypes = {
+// Login.propTypes = {
   // requestApiToken: PropTypes.func.isRequired,
-  requestApiQuestions: PropTypes.func.isRequired,
-};
+//  requestApiQuestions: PropTypes.func.isRequired,
+// };
 
 export default connect(null, mapDispatchToProps)(Login);
