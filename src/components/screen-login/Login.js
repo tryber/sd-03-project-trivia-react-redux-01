@@ -12,29 +12,29 @@ class Login extends Component {
       const token = await this.props.requestApiToken();
       const questions = await this.props.requestApiQuestions();
       localStorage.setItem('token', token.token);
-      console.log(questions);
     };
     return (
       <div className="cardText">
-          <div className="boxDirection">
-            <label htmlFor="input-gravatar-email">Email Gravatar
+        <div className="boxDirection">
+          <label htmlFor="input-gravatar-email">Email Gravatar
             <input data-testid="input-gravatar-email" className="boxN" type="email" required />
-            </label>
-            <label htmlFor="input-player-name"> Nome do Jogador
+          </label>
+          <label htmlFor="input-player-name"> Nome do Jogador
             <input data-testid="input-player-name" className="boxN" type="text" required />
-            </label>
-            <Link to="/game">
-              <button
-                className="buttonPlay"
-                type="button"
-                data-testid="btn-play"
-                onClick={() => tokenPlayer()} >Jogar
+          </label>
+          <Link to="/game">
+            <button
+              className="buttonPlay"
+              type="button"
+              data-testid="btn-play"
+              onClick={() => tokenPlayer()}
+            >Jogar
              </button>
-            </Link>
-            <Link>
-              <button data-testid="btn-settings" className="config">Configurações</button>
-            </Link>
-          </div>
+          </Link>
+          <Link>
+            <button data-testid="btn-settings" className="config">Configurações</button>
+          </Link>
+        </div>
       </div >
     );
   }
