@@ -11,22 +11,22 @@ class Login extends Component {
     const tokenPlayer = async () => {
       const token = await this.props.requestApiToken();
       const questions = await this.props.requestApiQuestions();
-      localStorage.setItem('token', token.token);
+      localStorage.setItem("token", token.token);
       console.log(questions);
     };
     return (
-      <div className='cardText'>
+      <div className="cardText">
         <header>
-          <div className='boxDirection'>
+          <div className="boxDirection">
             <label htmlFor="input-gravatar-email">Email Gravatar
-            <input data-testid="input-gravatar-email" className='boxEmail-Name' type="email" required />
+            <input data-testid="input-gravatar-email" className="boxEmail-Name" type="email" required />
             </label>
             <label htmlFor="input-player-name"> Nome do Jogador
-            <input data-testid="input-player-name" className='boxEmail-Name' type="text" required />
+            <input data-testid="input-player-name" className="boxEmail-Name" type="text" required />
             </label>
             <Link to="/game">
               <button
-                className='buttonPlay'
+                className="buttonPlay"
                 type="button"
                 data-testid="btn-play"
                 onClick={() => tokenPlayer()}
@@ -34,7 +34,7 @@ class Login extends Component {
              </button>
             </Link>
             <Link>
-              <button data-testid="btn-settings" className='config'>Configurações</button>
+              <button data-testid="btn-settings" className="config">Configurações</button>
             </Link>
           </div>
         </header>
