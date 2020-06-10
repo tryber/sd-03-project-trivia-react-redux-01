@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import '../screen-game/cardgame.css';
 
 class Game extends Component {
   render() {
     const { data } = this.props;
-    console.log('perguntas', data);
     return (
       <div>
-        <div>
+        <div className="boxQuestion">
+          <div className="boxWithPlayerName">nome do jogador</div>
           {data.map((e) => (
-            <p key={e.category}>{e.category}</p>
+            <p className="categoryBar" key={e.category}>{e.category}</p>
           ))}
           <p data-testid="question-category">a</p>
           <p data-testid="question-text">a</p>
