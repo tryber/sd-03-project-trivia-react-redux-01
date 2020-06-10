@@ -32,7 +32,7 @@ const mapState = (state) => ({
 // const mapDispatch = (dispatch) => ({
 //  data: () => dispatch(getResultsQuestions()),
 // });
-/*
+
 Game.propTypes = {
   data: PropTypes.shape({
     category: PropTypes.string,
@@ -40,5 +40,5 @@ Game.propTypes = {
     question: PropTypes.string,
   }).isRequired,
 };
-*/
+
 export default connect(mapState)(Game);
