@@ -35,10 +35,10 @@ const mapState = (state) => ({
 
 Game.propTypes = {
   data: PropTypes.shape({
-    category: PropTypes.string,
+    category: PropTypes.string.isRequired,
     difficulty: PropTypes.string,
     question: PropTypes.string,
-  }),
+  }).isRequired,
 };
 
 export default connect(mapState)(Game);
