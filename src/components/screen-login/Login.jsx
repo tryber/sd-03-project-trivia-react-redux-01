@@ -5,8 +5,20 @@ import { connect } from 'react-redux';
 import './layout/Login.css';
 import { getTokenUser, getResultsQuestions } from '../../actions/a-token';
 
-class Login extends Component {
+const timer = () => {
+  let counter = 30;
+  const timerOff = setInterval(() => {
+    if( counter <= 0) {
+      clearInterval(timerOff);
+    }
+    console.log(counter --)
+  }, 1000)
+}
 
+
+class Login extends Component {
+  
+  
   render() {
     const tokenPlayer = async () => {
       const token = await this.props.requestApiToken();
@@ -16,6 +28,7 @@ class Login extends Component {
     };
     return (
       <div>
+      <button onClick={() => timer()}>Testar timer</button>
         <header>
           <label htmlFor="input-gravatar-email">Email Gravatar
             <input data-testid="input-gravatar-email" type="email" required />

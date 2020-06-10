@@ -1,17 +1,20 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 
-import Login from '../src/components/screen-login/Login';
+import Login from '../src/components/screen-login/Login.jsx';
 import Hanking from './components/sreen-hanking/Hanking';
-import Game from './components/screen-game/Trivia.jsx';
+import Game from './components/screen-game/Game';
 
 export default function App() {
   return (
     <BrowserRouter>
-      <Route exact path="/" component={Login} />
-      <Route exact path="/hanking" component={Hanking} />
-      <Route exact path="/game" component={Game} />
+      <Switch>
+        <Route exact path="/" component={Login} />
+        <Route exact path="/hanking" component={Hanking} />
+        <Route exact path="/game" component={Game} />
+        <Route exact path="/games/questions/:id/" component={Game} />
+      </Switch>
     </BrowserRouter>
   );
 }
