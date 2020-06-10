@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 class Game extends Component {
@@ -38,7 +38,7 @@ Game.propTypes = {
     category: PropTypes.string,
     difficulty: PropTypes.string,
     question: PropTypes.string,
-  }).isRequired,
+  }),
 };
 
 export default connect(mapState)(Game);
