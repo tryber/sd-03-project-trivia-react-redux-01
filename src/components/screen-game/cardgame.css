@@ -1,20 +1,16 @@
-/*Categoria de perguntas css*/
-
 .CorrectQuestion {
   border: 3px solid rgb(6, 240, 15);
 }
 
 .incorrectQuestion {
-  border: 3px solid rgb(255, 0, 0);
+  border: 3px solid red;
 }
-
-/*Caixa com perguntas e nome do jogar*/
 
 .nameOfPlayer {
   color: black;
   font-size: 26px;
-  font-style: normal;
-  font-weight: normal;
+  font-style: 15px;
+  font-weight: 15px;
   height: 30px;
   line-height: 30px;
   position: absolute;
@@ -29,7 +25,7 @@
 }
 
 .QuestionsBox {
-  background: #C4C4C4;
+  background: #c4c4c4;
   height: 291px;
   position: absolute;
   width: 296px;
@@ -37,10 +33,9 @@
 
 .textQuestion {
   color: black;
-  font-family: Roboto;
   font-size: 30px;
-  font-style: normal;
-  font-weight: normal;
+  font-style: 15px;
+  font-weight: 15px;
   height: 215px;
   line-height: 35px;
   position: absolute;
@@ -57,24 +52,21 @@
 
 .score {
   color: black;
-  font-family: Roboto;
   font-size: 30px;
-  font-style: normal;
-  font-weight: normal;
+  font-style: 15px;
+  font-weight: 15px;
   height: 35px;
   line-height: 35px;
   position: absolute;
   width: 143px;
 }
 
-/*Conteudo da pagina de feedback*/
-
 .feedBack {
   color: black;
   font-family: Roboto;
   font-size: 46px;
-  font-style: normal;
-  font-weight: normal;
+  font-style: 15px;
+  font-weight: 15px;
   height: 188px;
   line-height: 54px;
   position: absolute;
@@ -86,8 +78,8 @@
   color: black;
   font-family: Roboto;
   font-size: 32px;
-  font-style: normal;
-  font-weight: normal;
+  font-style: 15px;
+  font-weight: 15px;
   height: 38px;
   line-height: 37px;
   position: absolute;
@@ -95,13 +87,10 @@
   width: 204px;
 }
 
-/* Css de configurações*/
-
 .systemOption {
-  font-family: Roboto;
   font-size: 40px;
-  font-style: normal;
-  font-weight: normal;
+  font-style: 15px;
+  font-weight: 15px;
   height: 47px;
   line-height: 47px;
   position: absolute;
@@ -111,10 +100,9 @@
 
 .configCategoryName {
   color: black;
-  font-family: Roboto;
   font-size: 31px;
-  font-style: normal;
-  font-weight: normal;
+  font-style: 15px;
+  font-weight: 15px;
   height: 36px;
   line-height: 36px;
   position: absolute;
@@ -123,10 +111,9 @@
 }
 
 .sistemDificult {
-  font-family: Roboto;
   font-size: 31px;
-  font-style: normal;
-  font-weight: normal;
+  font-style: 15px;
+  font-weight: 15px;
   height: 36px;
   line-height: 36px;
   position: absolute;
@@ -136,10 +123,9 @@
 
 .typeOfGame {
   color: black;
-  font-family: Roboto;
   font-size: 31px;
-  font-style: normal;
-  font-weight: normal;
+  font-style: 15px;
+  font-weight: 15px;
   height: 36px;
   line-height: 36px;
   position: absolute;

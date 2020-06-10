@@ -9,7 +9,8 @@
 }
 
 /* Tela de Inicio*/
-.boxDirection{
+
+.boxDirection {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -18,26 +19,26 @@
 }
 
 .boxLogin {
-  background: rgb(255, 255, 255);
+  background: white;
   border: solid 1px black;
   display: flex;
   height: 474px;
-  justify-content:center;
+  justify-content: center;
   width: 792px;
 }
 
-.boxEmail-Name {
-  background: #FFFFFF;  
+.boxN {
+  background: white;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   height: 20px;
-  justify-content:space-between;
+  justify-content: space-between;
   width: 200px;
 }
 
 .buttonPlay {
-  background: #86D660;
+  background: #86d660;
   display: flex;
   font-size: large;
   height: 20px;
@@ -45,6 +46,6 @@
   width: 200px;
 }
 
-.config{
+.config {
   margin-top: 10px;
 }

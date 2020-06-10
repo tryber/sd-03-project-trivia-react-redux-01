@@ -11,7 +11,7 @@ class Login extends Component {
     const tokenPlayer = async () => {
       const token = await this.props.requestApiToken();
       const questions = await this.props.requestApiQuestions();
-      localStorage.setItem("token", token.token);
+      localStorage.setItem('token', token.token);
       console.log(questions);
     };
     return (
@@ -19,10 +19,10 @@ class Login extends Component {
         <header>
           <div className="boxDirection">
             <label htmlFor="input-gravatar-email">Email Gravatar
-            <input data-testid="input-gravatar-email" className="boxEmail-Name" type="email" required />
+            <input data-testid="input-gravatar-email" className="boxN" type="email" required />
             </label>
             <label htmlFor="input-player-name"> Nome do Jogador
-            <input data-testid="input-player-name" className="boxEmail-Name" type="text" required />
+            <input data-testid="input-player-name" className="boxN" type="text" required />
             </label>
             <Link to="/game">
               <button

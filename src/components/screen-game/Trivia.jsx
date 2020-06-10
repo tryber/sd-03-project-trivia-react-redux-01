@@ -6,7 +6,6 @@ import '../screen-game/cardgame.css';
 class Game extends Component {
   render() {
     const { data } = this.props;
-    console.log("perguntas", data);
     return (
       <div>
         <div className="boxQuestion">
