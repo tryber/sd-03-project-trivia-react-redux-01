@@ -3,13 +3,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class Game extends Component {
-  componentDidMount(){
+  componentDidMount() {
     const { data } = this.props;
-    let inc = data[0].incorrect_answers;
-    inc.splice(Math.floor((inc.length+1)*Math.random()),0,data[0].correct_answer);
+    const inc = data[0].incorrect_answers;
+    inc.splice(Math.floor((inc.length + 1) * Math.random()), 0, data[0].correct_answer);
   }
   render() {
-    
     console.log('perguntas', this.props.data);
     return (
       <div>
@@ -18,7 +17,7 @@ class Game extends Component {
           <p data-testid="question-text">{this.data[0].question ? this.data[0].question : ''}</p>
         </div>
         <div>
-          {this.inc.map(e => <button>{e}</button>)}
+          {this.inc.map((e) => <button>{e}</button>)}
         </div>
         <button data-testid="btn-next">Proxima</button>
       </div>
@@ -33,7 +32,7 @@ const mapState = (state) => ({
 // const mapDispatch = (dispatch) => ({
 //  data: () => dispatch(getResultsQuestions()),
 // });
-/*
+
 Game.propTypes = {
   data: PropTypes.shape({
     category: PropTypes.string,
@@ -41,5 +40,5 @@ Game.propTypes = {
     question: PropTypes.string,
   }).isRequired,
 };
-*/
+
 export default connect(mapState)(Game);
