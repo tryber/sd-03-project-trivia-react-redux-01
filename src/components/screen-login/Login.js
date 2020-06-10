@@ -12,6 +12,7 @@ class Login extends Component {
   }
 
   render() {
+    const { requestApiToken } =this.props;
     return (
       <div>
         <header>
@@ -28,7 +29,7 @@ class Login extends Component {
             <button
               type="button"
               data-testid="btn-play"
-              onClick={() => getToken()}
+              onClick={() => requestApiToken()}
             >Jogar
              </button>
           </Link>
