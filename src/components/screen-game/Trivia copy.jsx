@@ -1,27 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import '../screen-game/cardgame.css';
 
 class Game extends Component {
-  render() {
+  componentDidMount() {
     const { data } = this.props;
-
-    console.log('perguntas', data[0]);
-
+    const inc = data[0].incorrect_answers;
+    inc.splice(Math.floor((inc.length + 1) * Math.random()), 0, data[0].correct_answer);
+  }
+  render() {
+    console.log('perguntas', this.props.data);
     return (
       <div>
-        <div className="boxQuestion">
-          <div className="boxWithPlayerName">nome do jogador</div>
-          {data.map((e) => (
-            <p className="categoryBar" key={e.category}>{e.category}</p>
-          ))}
-          <p data-testid="question-category">a</p>
-          <p data-testid="question-text">a</p>
+        <div>
+          <p data-testid="question-category">{this.data[0].category ? this.data[0].category : ''}</p>
+          <p data-testid="question-text">{this.data[0].question ? this.data[0].question : ''}</p>
         </div>
         <div>
-          <button data-testid="correct-answer">Alternativas</button>
-          <button data-testid="wrong-answer">Alternativa incorretas</button>
+          {this.inc.map((e) => <button>{e}</button>)}
         </div>
         <button data-testid="btn-next">Proxima</button>
       </div>
@@ -39,7 +35,7 @@ const mapState = (state) => ({
 
 Game.propTypes = {
   data: PropTypes.shape({
-    category: PropTypes.string,
+    category: PropTypes.string.isRequired,
     difficulty: PropTypes.string,
     question: PropTypes.string,
   }).isRequired,
