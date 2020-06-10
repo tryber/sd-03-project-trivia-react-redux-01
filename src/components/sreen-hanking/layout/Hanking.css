@@ -1,0 +1,14 @@
+.card {
+  background-color: lightblue;
+  border-radius: 4px;
+  margin: 40px auto;
+  width: 360px;
+}
+
+.hanking {
+  background-color: lavender;
+}
+
+.hank-list {
+  list-style: none;
+}

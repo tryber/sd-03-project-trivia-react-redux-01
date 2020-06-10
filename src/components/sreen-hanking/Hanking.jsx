@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import './layout/Hanking.css';
 
 const xablau = [
   'imagem',
@@ -8,20 +9,20 @@ const xablau = [
 class Hanking extends Component {
   render() {
     return (
-      <div>
+      <div className="card">
         <h1>Hanking</h1>
-        <Link to="/home">
-          <button data-testid="btn-go-home">
-            Início
-        </button>
-        </Link>
         {xablau.map((img, name, ponts) => (
-          <ul>
+          <ul className="hank-list">
             <li>{img}</li>
             <li>{name}</li>
             <li data-testid="player-score-index">{ponts}</li>
           </ul>
         ))}
+        <Link to="/home">
+          <button data-testid="btn-go-home">
+            Início
+        </button>
+        </Link>
       </div>
     );
   }

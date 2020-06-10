@@ -2,16 +2,18 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getTokenUser, getToken } from '../../actions/a-token';
-
+import './layout/Login.css';
+import { getTokenUser, getResultsQuestions } from '../../actions/a-token';
 
 class Login extends Component {
-  componentDidMount() {
-    const { requestApiToken } = this.props;
-    requestApiToken();
-  }
 
   render() {
+    const tokenPlayer = async () => {
+      const token = await this.props.requestApiToken();
+      const questions = await this.props.requestApiQuestions();
+      localStorage.setItem('token', token.token);
+      console.log(questions);
+    };
     return (
       <div>
         <header>
@@ -28,7 +30,7 @@ class Login extends Component {
             <button
               type="button"
               data-testid="btn-play"
-              onClick={() => getToken()}
+              onClick={() => tokenPlayer()}
             >Jogar
              </button>
           </Link>
@@ -38,12 +40,18 @@ class Login extends Component {
   }
 }
 
+// const mapState = (state) => ({
+//   data: state.tokenAndQuestions.data,
+// });
+
 const mapDispatchToProps = (dispatch) => ({
   requestApiToken: () => dispatch(getTokenUser()),
+  requestApiQuestions: () => dispatch(getResultsQuestions()),
 });
 
 Login.propTypes = {
-  requestApiToken: PropTypes.func.isRequired,
+  // requestApiToken: PropTypes.func.isRequired,
+  requestApiQuestions: PropTypes.func.isRequired,
 };
 
 export default connect(null, mapDispatchToProps)(Login);
