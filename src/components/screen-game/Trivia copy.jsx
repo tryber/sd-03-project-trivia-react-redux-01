@@ -14,8 +14,8 @@ class Game extends Component {
     return (
       <div>
         <div>
-        <p data-testid="question-category">{this.data[0]?.category ? this.data[0]?.category:''}</p>
-          <p data-testid="question-text">{this.data[0]?.question ? this.data[0]?.question:''}</p>
+          <p data-testid="question-category">{this.data[0].category ? this.data[0].category : ''}</p>
+          <p data-testid="question-text">{this.data[0].question ? this.data[0].question : ''}</p>
         </div>
         <div>
           {this.inc.map(e => <button>{e}</button>)}
