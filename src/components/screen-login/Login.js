@@ -10,7 +10,6 @@ class Login extends Component {
   render() {
     const tokenPlayer = async () => {
       const token = await this.props.requestApiToken();
-      const questions = await this.props.requestApiQuestions();
       localStorage.setItem('token', token.token);
     };
     return (
