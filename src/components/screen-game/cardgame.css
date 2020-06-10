@@ -9,8 +9,6 @@
 .nameOfPlayer {
   color: black;
   font-size: 26px;
-  font-style: 15px;
-  font-weight: 15px;
   height: 30px;
   line-height: 30px;
   position: absolute;
@@ -34,14 +32,11 @@
 .textQuestion {
   color: black;
   font-size: 30px;
-  font-style: 15px;
-  font-weight: 15px;
   height: 215px;
   line-height: 35px;
   position: absolute;
   width: 273px;
 }
-
 
 .photoDefault {
   border-radius: 112.5px;
@@ -53,8 +48,6 @@
 .score {
   color: black;
   font-size: 30px;
-  font-style: 15px;
-  font-weight: 15px;
   height: 35px;
   line-height: 35px;
   position: absolute;
@@ -63,10 +56,7 @@
 
 .feedBack {
   color: black;
-  font-family: Roboto;
   font-size: 46px;
-  font-style: 15px;
-  font-weight: 15px;
   height: 188px;
   line-height: 54px;
   position: absolute;
@@ -76,10 +66,7 @@
 
 .rankingBar {
   color: black;
-  font-family: Roboto;
   font-size: 32px;
-  font-style: 15px;
-  font-weight: 15px;
   height: 38px;
   line-height: 37px;
   position: absolute;
@@ -89,8 +76,6 @@
 
 .systemOption {
   font-size: 40px;
-  font-style: 15px;
-  font-weight: 15px;
   height: 47px;
   line-height: 47px;
   position: absolute;
@@ -101,8 +86,6 @@
 .configCategoryName {
   color: black;
   font-size: 31px;
-  font-style: 15px;
-  font-weight: 15px;
   height: 36px;
   line-height: 36px;
   position: absolute;
@@ -112,8 +95,6 @@
 
 .sistemDificult {
   font-size: 31px;
-  font-style: 15px;
-  font-weight: 15px;
   height: 36px;
   line-height: 36px;
   position: absolute;
@@ -124,8 +105,6 @@
 .typeOfGame {
   color: black;
   font-size: 31px;
-  font-style: 15px;
-  font-weight: 15px;
   height: 36px;
   line-height: 36px;
   position: absolute;
