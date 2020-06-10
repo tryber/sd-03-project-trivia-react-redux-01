@@ -16,7 +16,6 @@ class Login extends Component {
     };
     return (
       <div className="cardText">
-        <header>
           <div className="boxDirection">
             <label htmlFor="input-gravatar-email">Email Gravatar
             <input data-testid="input-gravatar-email" className="boxN" type="email" required />
@@ -29,15 +28,13 @@ class Login extends Component {
                 className="buttonPlay"
                 type="button"
                 data-testid="btn-play"
-                onClick={() => tokenPlayer()}
-              >Jogar
+                onClick={() => tokenPlayer()} >Jogar
              </button>
             </Link>
             <Link>
               <button data-testid="btn-settings" className="config">Configurações</button>
             </Link>
           </div>
-        </header>
       </div >
     );
   }
