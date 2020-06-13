@@ -2,43 +2,89 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import '../screen-game/cardgame.css';
+import Timer from '../screen-game/Timer';
 
+/* const borderColor = (type) => {
+  if (type === 'correct-answer') return 'rgb(6, 240, 15)';
+  return 'rgb(255, 0, 0)';
+};
+ */
 class Game extends Component {
-  render() {
-    const { data } = this.props;
+  constructor(props) {
+    super(props);
+    this.state = {
+      questionIndex: 0,
+      timer: 0,
+    };
 
-    console.log('perguntas', data[0]);
+    this.correctAnswer = this.correctAnswer.bind(this);
+    this.renderQuestions = this.renderQuestions.bind(this);
+    this.clicktNextQuestions = this.clicktNextQuestions.bind(this);
+  }
 
+  clicktNextQuestions() {
+    return this.setState((state) => ({ questionIndex: state.questionIndex + 1 }));
+  }
+
+  correctAnswer() {
+    const { dataQuestions } = this.props;
+    const alternatives = dataQuestions[this.state.questionIndex];
+    const { correct_answer: correct, incorrect_answers: incorrect } = alternatives;
+    const incorrectBtn = incorrect.map((response, index) => (
+      <div>
+        <button
+          /* style={true ? { border: `3px solid ${borderColor('type')}` } : {}} */
+          data-testid={`${index !== null ? `-${index}` : ''}`}
+        >
+          {response}
+        </button>
+      </div>
+    ),
+    );
+    return [
+      ...incorrectBtn, <button type="correct-answer" >{correct}</button>,
+    ];
+  }
+
+  renderQuestions() {
+    const { dataQuestions } = this.props;
+    const eachQuestions = dataQuestions[this.state.questionIndex];
+    if (dataQuestions.length === 0) return <div>loading...</div>;
     return (
       <div>
         <div className="boxQuestion">
-          <div className="boxWithPlayerName">nome do jogador</div>
-          {data.map((e) => (
-            <p className="categoryBar" key={e.category}>{e.category}</p>
-          ))}
-          <p data-testid="question-category">a</p>
-          <p data-testid="question-text">a</p>
+          <div className="boxWithPlayerName">Nome do jogador</div>
+          <p className="categoryBar" >s</p>
+          <p data-testid="question-category">{eachQuestions.category}</p>
+          <p data-testid="question-text">{eachQuestions.question}</p>
+          {this.correctAnswer()}
+          <Timer />
         </div>
-        <div>
-          <button data-testid="correct-answer">Alternativas</button>
-          <button data-testid="wrong-answer">Alternativa incorretas</button>
-        </div>
-        <button data-testid="btn-next">Proxima</button>
+        <button
+          onClick={() => this.clicktNextQuestions()}
+          data-testid="btn-next"
+        >
+          Proxima
+      </button>
+      </div>
+    );
+  }
+
+  render() {
+    return (
+      <div>
+        {this.renderQuestions()}
       </div>
     );
   }
 }
 
 const mapState = (state) => ({
-  data: state.tokenAndQuestions.data,
+  dataQuestions: state.tokenAndQuestions.data,
 });
 
-// const mapDispatch = (dispatch) => ({
-//  data: () => dispatch(getResultsQuestions()),
-// });
-
 Game.propTypes = {
-  data: PropTypes.shape({
+  dataQuestions: PropTypes.shape({
     category: PropTypes.string,
     difficulty: PropTypes.string,
     question: PropTypes.string,

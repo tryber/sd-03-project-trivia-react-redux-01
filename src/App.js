@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 
 import Login from '../src/components/screen-login/Login.jsx';
@@ -13,9 +13,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={Login} />
         <Route exact path="/hanking" component={Hanking} />
-        <Route exact path="/loading" component={Loading} />
         <Route exact path="/game" component={Game} />
-        <Route exact path="/games/questions/:id/" component={Game} />
       </Switch>
     </BrowserRouter>
   );

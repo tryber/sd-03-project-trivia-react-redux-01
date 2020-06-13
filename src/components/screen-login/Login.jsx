@@ -5,24 +5,8 @@ import { connect } from 'react-redux';
 import './layout/Login.css';
 import { getTokenUser, getResultsQuestions } from '../../actions/a-token';
 
-const timer = () => {
-  let counter = 30;
-  const timerOff = setInterval(() => {
-    if( counter <= 0) {
-      clearInterval(timerOff);
-    }
-    console.log(counter --)
-  }, 1000)
-}
-
-const questionsPoints = (time, dificulty, a = 10 ) => {
-  return a + (time * dificulty)
-}
-
 
 class Login extends Component {
-  
-  
   render() {
     const tokenPlayer = async () => {
       const token = await this.props.requestApiToken();
