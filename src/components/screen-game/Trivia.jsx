@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 import '../screen-game/cardgame.css';
 import Timer from '../screen-game/Timer';
 
-const borderColor = (type) => {
+/* const borderColor = (type) => {
   if (type === 'correct-answer') return 'rgb(6, 240, 15)';
   return 'rgb(255, 0, 0)';
 };
-
+ */
 class Game extends Component {
   constructor(props) {
     super(props);
