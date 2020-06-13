@@ -16,49 +16,46 @@ class Game extends Component {
     this.state = {
       questionIndex: 0,
       timer: 0,
-    }
-  
+    };
+
     this.correctAnswer = this.correctAnswer.bind(this);
     this.renderQuestions = this.renderQuestions.bind(this);
     this.clicktNextQuestions = this.clicktNextQuestions.bind(this);
   }
 
   clicktNextQuestions() {
-    const { questionIndex } = this.state;
     return this.setState((state) => ({ questionIndex: state.questionIndex + 1 }));
   }
 
   correctAnswer() {
     const { dataQuestions } = this.props;
-    const alternatives = dataQuestions[this.state.questionIndex]
+    const alternatives = dataQuestions[this.state.questionIndex];
     const { correct_answer: correct, incorrect_answers: incorrect } = alternatives;
-    const incorrectBtn = incorrect.map((response, index) => {
-      return (
-        <div>
-          <button
-            style={true ? { border: `3px solid ${borderColor('type')}` } : {}}
-            data-testid={`${index !== null ? `-${index}` : ''}`}
-          >
-            {response}
-          </button>
-        </div>
-      )
-    });
+    const incorrectBtn = incorrect.map((response, index) => (
+      <div>
+        <button
+          style={true ? { border: `3px solid ${borderColor('type')}` } : {}}
+          data-testid={`${index !== null ? `-${index}` : ''}`}
+        >
+          {response}
+        </button>
+      </div>
+    )
+    );
     return [
       ...incorrectBtn, <button type="correct-answer" >{correct}</button>
-    ]
+    ];
   }
 
   renderQuestions() {
     const { dataQuestions } = this.props;
-    console.log(dataQuestions)
     const eachQuestions = dataQuestions[this.state.questionIndex];
     if (dataQuestions.length === 0) return <div>loading...</div>
     return (
       <div>
         <div className="boxQuestion">
           <div className="boxWithPlayerName">Nome do jogador</div>
-          <p className="categoryBar" ></p>
+          <p className="categoryBar" >s</p>
           <p data-testid="question-category">{eachQuestions.category}</p>
           <p data-testid="question-text">{eachQuestions.question}</p>
           {this.correctAnswer()}

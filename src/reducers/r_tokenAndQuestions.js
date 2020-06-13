@@ -1,8 +1,8 @@
-import { GET_TOKEN, REQUEST_API, GET_QUESTIONS } from "../actions/a-token";
+import { GET_TOKEN, REQUEST_API, GET_QUESTIONS } from '../actions/a-token';
 
 const INITIAL_STATE = {
   data: [],
-  token: "",
+  token: '',
   isFetching: false,
 };
 

@@ -31,4 +31,10 @@ const mapDispatch = (dispatch) => ({
   stopTime: () => dispatch(stopTimer()),
 });
 
+Timer.propTypes = {
+  timer: PropTypes.number.isRequired,
+  stopTime: PropTypes.func.isRequired,
+  setTime: PropTypes.func.isRequired,
+};
+
 export default connect(mapStateToProps, mapDispatch)(Timer);
