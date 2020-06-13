@@ -39,7 +39,7 @@ class Login extends Component {
           <label htmlFor="input-player-name"> Nome do Jogador
             <input data-testid="input-player-name" className="boxN" type="text" required />
           </label>
-          <Link to="/game">
+          <Link to="/loading">
             <button
               className="buttonPlay"
               type="button"
