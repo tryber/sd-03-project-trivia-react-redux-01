@@ -34,14 +34,14 @@ class Game extends Component {
     const { correct_answer: correct, incorrect_answers: incorrect } = alternatives;
     const incorrectBtn = incorrect.map((response, index) => {
       return (
-        <>
+        <div>
           <button
             style={true ? { border: `3px solid ${borderColor('type')}` } : {}}
             data-testid={`${index !== null ? `-${index}` : ''}`}
           >
             {response}
           </button>
-        </>
+        </div>
       )
     });
     return [

@@ -10,7 +10,7 @@ export const getToken = (token) => ({
   token,
 });
 
-export const getResults = ({results}) => ({
+export const getResults = ({ results }) => ({
   type: GET_QUESTIONS,
   data: results,
 });

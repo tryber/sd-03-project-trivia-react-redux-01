@@ -21,7 +21,8 @@ export const timer = (state = INITIAL_STATE, action) => {
         ...state,
         time: action.timer,
       };
-    case STOP_TIMER: clearInterval()
+    case STOP_TIMER:
+      clearInterval();
       return {
         ...state,
       };

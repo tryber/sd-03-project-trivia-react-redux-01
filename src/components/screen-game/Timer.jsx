@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { timerCourse, stopTimer } from '../../reducers/r_timer';
 
 class Timer extends Component {
   componentDidMount() {
     let { timer, setTime, stopTime } = this.props;
-    let temporizador = (setInterval(() => {
-      if (timer === 10) return stopTime()
-      timer -= 1
-      return setTime(timer)
-    }, 100))
+    (setInterval(() => {
+      if (timer === 10) return stopTime();
+      timer -= 1;
+      return setTime(timer);
+    }, 100));
   }
 
   render() {

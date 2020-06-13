@@ -1,10 +1,10 @@
-import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import "./App.css";
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import './App.css';
 
-import Login from "../src/components/screen-login/Login";
-import Hanking from "./components/sreen-hanking/Hanking";
-import Game from "./components/screen-game/Trivia.jsx";
+import Login from '../src/components/screen-login/Login';
+import Hanking from './components/sreen-hanking/Hanking';
+import Game from './components/screen-game/Trivia.jsx';
 
 export default function App() {
   return (
