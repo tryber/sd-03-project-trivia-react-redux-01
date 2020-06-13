@@ -23,7 +23,8 @@ const tokenAndQuestions = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         data: action.data,
-      };
+        //data: [...action.data.map((e) => e[0])]
+       };
     default:
       return state;
   }

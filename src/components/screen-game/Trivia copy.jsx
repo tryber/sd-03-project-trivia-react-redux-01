@@ -8,6 +8,7 @@ class Game extends Component {
     const inc = data[0].incorrect_answers;
     inc.splice(Math.floor((inc.length + 1) * Math.random()), 0, data[0].correct_answer);
   }
+
   render() {
     console.log('perguntas', this.props.data);
     return (

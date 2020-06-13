@@ -10,9 +10,9 @@ export const getToken = (token) => ({
   token,
 });
 
-export const getResults = (data) => ({
+export const getResults = ({results}) => ({
   type: GET_QUESTIONS,
-  data,
+  data: results,
 });
 
 const requestApi = () => ({
@@ -33,6 +33,6 @@ export function getResultsQuestions() {
     dispatch(getToken());
 
     return requestQuestionsAPI()
-      .then((data) => dispatch(getResults(data.results)));
+      .then((data) => dispatch(getResults(data)));
   };
 }

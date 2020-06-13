@@ -4,38 +4,48 @@ import { connect } from 'react-redux';
 import '../screen-game/cardgame.css';
 
 class Game extends Component {
-  render() {
-    const { data } = this.props;
+  constructor(props) {
+    super(props);
+    this.state = {
+      questionIndex: 0,
+    }
+  }
 
-    console.log('perguntas', data[0]);
+  clicktNextQuestions = () => {
+    const { questionIndex } = this.state;
+    return this.setState((state) => ({ questionIndex: state.questionIndex + 1 }));
+  }
+
+  
+
+  render() {
+    const { dataQuestions } = this.props;
+    console.log(dataQuestions)
+    const eachQuestions = dataQuestions[this.state.questionIndex];
+    if (dataQuestions.length === 0) return <div>loading...</div>
 
     return (
       <div>
         <div className="boxQuestion">
-          <div className="boxWithPlayerName">nome do jogador</div>
-          {data.map((e) => (
-            <p className="categoryBar" key={e.category}>{e.category}</p>
-          ))}
-          <p data-testid="question-category">a</p>
-          <p data-testid="question-text">a</p>
+          <div className="boxWithPlayerName">Nome do jogador</div>
+          <p className="categoryBar" ></p>
+          <p data-testid="question-category">{eachQuestions.category}</p>
+          <p data-testid="question-text">{eachQuestions.question}</p>
         </div>
-        <div>
-          <button data-testid="correct-answer">Alternativas</button>
-          <button data-testid="wrong-answer">Alternativa incorretas</button>
-        </div>
-        <button data-testid="btn-next">Proxima</button>
+        <button
+          onClick={() => this.clicktNextQuestions()}
+          data-testid="btn-next"
+        >
+        Proxima
+        </button>
       </div>
     );
   }
 }
 
 const mapState = (state) => ({
-  data: state.tokenAndQuestions.data,
+  dataQuestions: state.tokenAndQuestions.data,
 });
-
-// const mapDispatch = (dispatch) => ({
-//  data: () => dispatch(getResultsQuestions()),
-// });
 
 Game.propTypes = {
   data: PropTypes.shape({

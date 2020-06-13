@@ -5,14 +5,14 @@ import { connect } from 'react-redux';
 import './layout/Login.css';
 import { getTokenUser, getResultsQuestions } from '../../actions/a-token';
 
-class Login extends Component {
 
+class Login extends Component {
   render() {
     const tokenPlayer = async () => {
       const token = await this.props.requestApiToken();
       const questions = await this.props.requestApiQuestions();
       localStorage.setItem('token', token.token);
-      console.log(questions);
+      //console.log(questions);
     };
     return (
       <div className="cardText">
