@@ -4,8 +4,8 @@ import './App.css';
 
 import Login from '../src/components/screen-login/Login.jsx';
 import Hanking from './components/sreen-hanking/Hanking';
-import Game from './components/screen-game/Trivia copy';
-import Loading from './components/screen-game/Loading';
+import Game from './components/screen-game/Trivia';
+
 
 export default function App() {
   return (
