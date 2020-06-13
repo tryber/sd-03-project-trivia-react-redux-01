@@ -5,7 +5,8 @@ import { timerCourse, stopTimer } from '../../reducers/r_timer';
 
 class Timer extends Component {
   componentDidMount() {
-    const { timer, setTime, stopTime } = this.props;
+    const { setTime, stopTime } = this.props;
+    let { timer } = this.props;
     (setInterval(() => {
       if (timer === 10) return stopTime();
       timer -= 1;
