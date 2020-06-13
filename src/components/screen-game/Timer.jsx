@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { timerCourse, stopTimer } from '../../reducers/r_timer';
 
 class Timer extends Component {
   componentDidMount() {
-    let { timer, setTime, stopTime } = this.props;
+    const { timer, setTime, stopTime } = this.props;
     (setInterval(() => {
       if (timer === 10) return stopTime();
       timer -= 1;

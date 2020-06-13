@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import '../screen-game/cardgame.css';
-import { timerCourse } from '../../reducers/r_timer';
 import Timer from '../screen-game/Timer';
 
 const borderColor = (type) => {
@@ -34,23 +33,23 @@ class Game extends Component {
     const incorrectBtn = incorrect.map((response, index) => (
       <div>
         <button
-          style={true ? { border: `3px solid ${borderColor('type')}` } : {}}
+          /* style={true ? { border: `3px solid ${borderColor('type')}` } : {}} */
           data-testid={`${index !== null ? `-${index}` : ''}`}
         >
           {response}
         </button>
       </div>
-    )
+    ),
     );
     return [
-      ...incorrectBtn, <button type="correct-answer" >{correct}</button>
+      ...incorrectBtn, <button type="correct-answer" >{correct}</button>,
     ];
   }
 
   renderQuestions() {
     const { dataQuestions } = this.props;
     const eachQuestions = dataQuestions[this.state.questionIndex];
-    if (dataQuestions.length === 0) return <div>loading...</div>
+    if (dataQuestions.length === 0) return <div>loading...</div>;
     return (
       <div>
         <div className="boxQuestion">
@@ -68,7 +67,7 @@ class Game extends Component {
           Proxima
       </button>
       </div>
-    )
+    );
   }
 
   render() {
@@ -85,7 +84,7 @@ const mapState = (state) => ({
 });
 
 Game.propTypes = {
-  data: PropTypes.shape({
+  dataQuestions: PropTypes.shape({
     category: PropTypes.string,
     difficulty: PropTypes.string,
     question: PropTypes.string,
