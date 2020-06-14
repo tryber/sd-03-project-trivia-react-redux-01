@@ -1,24 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { timerCourse, stopTimer } from '../../reducers/r_timer';
+import { timerCourse, stopTimer } from '../../actions/a_timer';
 
 class Timer extends Component {
+  
   componentDidMount() {
     const { setTime, stopTime } = this.props;
     let { timer } = this.props;
     (setInterval(() => {
-      if (timer === 10) return stopTime();
+      if (timer === 0) return stopTime();
       timer -= 1;
       return setTime(timer);
-    }, 100));
+    }, 1000));
   }
 
   render() {
     const { timer } = this.props;
     return (
       <div>
-        {timer}
+        Tempo: {timer}
       </div>
     );
   }

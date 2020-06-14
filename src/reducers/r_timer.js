@@ -1,14 +1,4 @@
-const TIME_COURSE = 'TIMER_IN_COURSE';
-const STOP_TIMER = 'STOP_TIMER';
-
-export const stopTimer = () => ({
-  type: STOP_TIMER,
-});
-
-export const timerCourse = (timer) => ({
-  type: TIME_COURSE,
-  timer,
-});
+import {TIME_COURSE, STOP_TIMER} from '../actions/a_timer';
 
 const INITIAL_STATE = {
   time: 30,
