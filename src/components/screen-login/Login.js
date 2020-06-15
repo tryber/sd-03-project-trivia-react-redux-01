@@ -8,8 +8,8 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      email: '',
+      name : '',
+      email : '',
     };
     this.changeFunc = this.changeFunc.bind(this);
     this.inputNameEmail = this.inputNameEmail.bind(this);
