@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './layout/Login.css';
 import { getTokenUser, getResultsQuestions, getNameEmail } from '../../actions/a-token';
 
 class Login extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -39,7 +41,8 @@ class Login extends Component {
     );
   }
 
-  static buttonDisabled(tokenPlayer) {
+  buttonDisabled(tokenPlayer) {
+    console.log(this);
     return (
       <button
         className="buttonPlay"
@@ -52,7 +55,8 @@ class Login extends Component {
     );
   }
 
-  static buttonPlay(tokenPlayer) {
+  buttonPlay(tokenPlayer) {
+    console.log(this);
     return (
       <button
         className="buttonPlay"
@@ -107,9 +111,9 @@ const mapDispatchToProps = (dispatch) => ({
   requestNameEmail: (name, email) => dispatch(getNameEmail(name, email)),
 });
 
-/* Login.propTypes = {
+Login.propTypes = {
   requestApiToken: PropTypes.func.isRequired,
   requestApiQuestions: PropTypes.func.isRequired,
 };
- */
+
 export default connect(null, mapDispatchToProps)(Login);

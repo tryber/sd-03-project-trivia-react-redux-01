@@ -10,7 +10,7 @@ function getgravatar(hash, data, name) {
     <div>
       <div className="boxQuestion">
         <header className="boxWithPlayerName">
-          <img src={`https://www.gravatar.com/avatar/${hash}`} alt='ImgGravatar' />
+          <img src={`https://www.gravatar.com/avatar/${hash}`} alt="ImgGravatar" />
           <p data-testid="header-player-name" >{name}</p>
         </header>
         {data.map((e) => (
