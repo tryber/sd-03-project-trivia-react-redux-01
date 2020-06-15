@@ -97,7 +97,7 @@ Game.propTypes = {
     difficulty: PropTypes.string,
     question: PropTypes.string,
   }).isRequired,
-  email: PropTypes.string,
+  /* email: PropTypes.string, */
 };
 
 export default connect(mapState, mapDispatch)(Game);
