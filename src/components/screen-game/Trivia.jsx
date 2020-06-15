@@ -9,9 +9,8 @@ import '../screen-game/cardgame.css';
 
 const CryptoJS = require('crypto-js');
 
-
-
 class Game extends Component {
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -47,12 +46,13 @@ class Game extends Component {
     ].sort(() => Math.floor(Math.random() * 3) - 1);
   }
 
-  renderQuestions(hash, name) {
+  renderQuestions(name) {
     const { dataQuestions } = this.props;
     const eachQuestions = dataQuestions[this.state.questionIndex];
     if (dataQuestions.length === 0) return <div>Loading...</div>;
     if (eachQuestions == null) return <Redirect to="/feedback" />;
     console.log(dataQuestions);
+    const hash = CryptoJS.MD5(this.props.email)
     return (
       <div>
         <div className="boxQuestion">
