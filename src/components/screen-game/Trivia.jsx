@@ -92,11 +92,12 @@ const mapDispatch = (dispatch) => ({
 });
 
 Game.propTypes = {
-  data: PropTypes.shape({
+  dataQuestions: PropTypes.shape({
     category: PropTypes.string,
     difficulty: PropTypes.string,
     question: PropTypes.string,
   }).isRequired,
+  email: PropTypes.string,
 };
 
 export default connect(mapState, mapDispatch)(Game);

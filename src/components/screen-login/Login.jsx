@@ -116,7 +116,8 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 Login.propTypes = {
-  requestApiToken: PropTypes.func.isRequired,
+  /* requestApiToken: PropTypes.func.isRequired, */
+  requestNameEmail: PropTypes.func.isRequired,
   /* requestApiQuestions: PropTypes.func.isRequired, */
 };
 
