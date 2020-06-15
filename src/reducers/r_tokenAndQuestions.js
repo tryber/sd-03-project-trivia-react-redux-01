@@ -1,8 +1,8 @@
 import { GET_TOKEN, REQUEST_API, GET_QUESTIONS, GET_NAME_EMAIL } from '../actions/a-token';
 
 const INITIAL_STATE = {
-  name:'',
-  email:'',
+  name: '',
+  email: '',
   data: [],
   token: '',
   isFetching: false,
