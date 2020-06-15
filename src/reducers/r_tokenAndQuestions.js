@@ -38,8 +38,3 @@ const tokenAndQuestions = (state = INITIAL_STATE, action) => {
 };
 
 export default tokenAndQuestions;
-
-
-/* PostsFiltered: action.filter
-? Posts.filter(action.filter).map(p => p.id)
-: undefined  */

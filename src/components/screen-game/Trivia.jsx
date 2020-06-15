@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import '../screen-game/cardgame.css';
 
@@ -33,7 +32,9 @@ class Game extends Component {
     const { data, name, email } = this.props;
     const hash = CryptoJS.MD5(email);
     return (
-      <>{getgravatar(hash, data, name)}</>
+      <>
+        {getgravatar(hash, data, name)}
+      </>
     );
   }
 }

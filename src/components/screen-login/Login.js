@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './layout/Login.css';
@@ -25,22 +24,22 @@ class Login extends Component {
           data-testid="input-gravatar-email"
           className="boxN"
           type="email"
-          onChange={(event) => this.changeFunc(event, 'email')}
+          onChange={(event) => this.changeFunc(event, "email")}
           value={email}
-          placeholder='Email'
+          placeholder="Email"
         />
         <input
           data-testid="input-player-name"
           className="boxN" type="text"
-          onChange={(event) => this.changeFunc(event, 'name')}
+          onChange={(event) => this.changeFunc(event, "name")}
           value={name}
-          placeholder='Nome Jogador'
+          placeholder="Nome Jogador"
         />
       </div>
     );
   }
 
-  buttonDisabled(tokenPlayer) {
+  buttonDisabled() {
     return (
       <button
         className="buttonPlay"
@@ -50,7 +49,7 @@ class Login extends Component {
         disabled
       >Jogar
       </button>
-    )
+    );
   }
 
   buttonPlay(tokenPlayer) {
@@ -59,10 +58,11 @@ class Login extends Component {
         className="buttonPlay"
         type="button"
         data-testid="btn-play"
-        onClick={() => tokenPlayer()}>
+        onClick={() => tokenPlayer()}
+      >
         Jogar
       </button>
-    )
+    );
   }
 
   changeFunc(event, field) {
@@ -76,7 +76,7 @@ class Login extends Component {
     const tokenPlayer = async () => {
       const token = await this.props.requestApiToken();
       localStorage.setItem('token', token.token);
-      this.props.requestNameEmail(name, email);
+      this.requestNameEmail(name, email);
     };
     return (
       <div className="cardText">

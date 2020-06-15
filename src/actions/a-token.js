@@ -4,7 +4,7 @@ import requestQuestionsAPI from '../service/QuestionsAPI';
 export const REQUEST_API = 'REQUEST_API';
 export const GET_TOKEN = 'GET_TOKEN_FROM_API';
 export const GET_QUESTIONS = 'GET_ARRAY_RESULTS';
-export const GET_NAME_EMAIL ='GET_NAME_EMAIL_USER'
+export const GET_NAME_EMAIL = 'GET_NAME_EMAIL_USER';
 
 export const getToken = (token) => ({
   type: GET_TOKEN,
