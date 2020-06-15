@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import './layout/Login.css';
 import { getTokenUser, getResultsQuestions } from '../../actions/a-token';
 
-class Login extends Component {
 
+class Login extends Component {
   render() {
     const tokenPlayer = async () => {
       const token = await this.props.requestApiToken();
@@ -14,6 +15,7 @@ class Login extends Component {
       localStorage.setItem('token', token.token);
       console.log(questions);
     };
+
     return (
       <div className="cardText">
         <div className="boxDirection">

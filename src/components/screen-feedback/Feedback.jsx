@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Header from '../header/c-header';
+import Header from '../header/Header';
 
 
-export class Feedback extends Component {
+class Feedback extends Component {
   render() {
     const num = this.props.correct;
     const score = this.props.score;
