@@ -15,7 +15,6 @@ class Login extends Component {
     this.inputNameEmail = this.inputNameEmail.bind(this);
     this.buttonDisabled = this.buttonDisabled.bind(this);
     this.buttonPlay = this.buttonPlay.bind(this);
-    this.tokenPlayer = this.tokenPlayer.bind(this);
   }
 
   inputNameEmail(name, email) {
@@ -40,7 +39,7 @@ class Login extends Component {
     );
   }
 
-  buttonDisabled({tokenPlayer}) {
+  static buttonDisabled(tokenPlayer) {
     return (
       <button
         className="buttonPlay"
@@ -53,7 +52,7 @@ class Login extends Component {
     );
   }
 
-  buttonPlay(tokenPlayer) {
+  static buttonPlay(tokenPlayer) {
     return (
       <button
         className="buttonPlay"

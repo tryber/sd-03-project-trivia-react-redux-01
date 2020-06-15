@@ -51,12 +51,12 @@ const mapState = (state) => ({
 // });
 
 Game.propTypes = {
+  name: PropTypes.string,
+  email: PropTypes.string,
   data: PropTypes.shape({
     category: PropTypes.string,
     difficulty: PropTypes.string,
     question: PropTypes.string,
-    name: PropTypes.string,
-    email: PropTypes.string,
   }).isRequired,
 };
 
