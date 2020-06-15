@@ -10,7 +10,6 @@ import '../screen-game/cardgame.css';
 const CryptoJS = require('crypto-js');
 
 class Game extends Component {
-  
   constructor(props) {
     super(props);
     this.state = {
