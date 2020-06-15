@@ -4,7 +4,11 @@ import PropTypes from 'prop-types';
 import { timerCourse, stopTimer } from '../../actions/a_timer';
 
 class Timer extends Component {
-  updateTimer(){
+  componentDidMount() {
+    this.updateTimer();
+  }
+
+  updateTimer() {
     const { setTime, stopTime } = this.props;
     let { timer } = this.props;
     (setInterval(() => {
@@ -14,9 +18,6 @@ class Timer extends Component {
     }, 1000));
   }
 
-  componentDidMount() {
-    this.updateTimer()
-  }
 
   render() {
     const { timer } = this.props;

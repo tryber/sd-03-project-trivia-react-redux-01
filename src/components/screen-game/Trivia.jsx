@@ -25,7 +25,7 @@ class Game extends Component {
     this.clicktNextQuestions = this.clicktNextQuestions.bind(this);
   }
 
-  clicktNextQuestions() {   
+  clicktNextQuestions() {
     return this.setState((state) => ({ questionIndex: state.questionIndex + 1 }));
   }
 
@@ -46,14 +46,14 @@ class Game extends Component {
     );
     return [
       ...incorrectBtn, <button type="correct-answer" >{correct}</button>,
-    ].sort(() => Math.floor(Math.random() * 3) - 1)
+    ].sort(() => Math.floor(Math.random() * 3) - 1);
   }
 
   renderQuestions() {
-    const { dataQuestions, } = this.props;
+    const { dataQuestions } = this.props;
     const eachQuestions = dataQuestions[this.state.questionIndex];
     if (dataQuestions.length === 0) return <div>Loading...</div>;
-    if (eachQuestions == null) return <Redirect to='/feedback' />
+    if (eachQuestions == null) return <Redirect to="/feedback" />;
     return (
       <div>
         <div className="boxQuestion">

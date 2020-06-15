@@ -1,10 +1,10 @@
-import {TIME_COURSE, STOP_TIMER} from '../actions/a_timer';
+import { TIME_COURSE, STOP_TIMER } from '../actions/a_timer';
 
 const INITIAL_STATE = {
   time: 30,
 };
 
-export const timer = (state = INITIAL_STATE, action) => {
+const timer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case TIME_COURSE:
       return {
@@ -20,3 +20,5 @@ export const timer = (state = INITIAL_STATE, action) => {
       return state;
   }
 };
+
+export default timer;
