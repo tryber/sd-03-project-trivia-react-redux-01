@@ -7,17 +7,18 @@ import { timerCourse } from '../../actions/a_timer';
 import Timer from '../screen-game/Timer';
 import '../screen-game/cardgame.css';
 
-/* const borderColor = (type) => {
-  if (type === 'correct-answer') return 'rgb(6, 240, 15)';
-  return 'rgb(255, 0, 0)';
-};
- */
+// switch(difficulty) {
+//   case 'hard': return 3;
+//   case 'medium': return 2;
+//   case 'easy': return 1;
+// }
 
 class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
       questionIndex: 0,
+      answers: false,
     };
 
     this.correctAnswer = this.correctAnswer.bind(this);
@@ -26,27 +27,46 @@ class Game extends Component {
   }
 
   clicktNextQuestions() {
-    return this.setState((state) => ({ questionIndex: state.questionIndex + 1 }));
+    return this.setState((state) => ({ questionIndex: state.questionIndex + 1, answers: false }));
   }
 
   correctAnswer() {
     const { dataQuestions } = this.props;
     const alternatives = dataQuestions[this.state.questionIndex];
     const { correct_answer: correct, incorrect_answers: incorrect } = alternatives;
-    const incorrectBtn = incorrect.map((response, index) => (
-      <div>
-        <button
-          /* style={true ? { border: `3px solid ${borderColor('type')}` } : {}} */
-          data-testid={`wrong-answer-${index}`}
-        >
-          {response}
-        </button>
-      </div>
-    ),
-    );
-    return [
-      ...incorrectBtn, <button type="correct-answer" >{correct}</button>,
-    ].sort(() => Math.floor(Math.random() * 3) - 1);
+    if (!this.state.answers) {
+      const incorrectBtn = incorrect.map((response, index) => (
+        <div>
+          <button
+            data-testid={`wrong-answer-${index}`}
+            onClick={() => this.setState({ answers: true })}
+          >
+            {response}
+          </button>
+        </div>
+      ));
+      return [
+        ...incorrectBtn, <button
+          onClick={() => this.setState({ answers: true })}
+          type="correct-answer" >{correct}</button>,
+      ].sort(() => Math.floor(Math.random() * 3) - 1);
+    } else {
+      const incorrectBtn = incorrect.map((response, index) => (
+        <div>
+          <button
+            disabled
+            style={{ borderColor: 'rgb(255, 0, 0)' }}
+            data-testid={`wrong-answer-${index}`}
+            onClick={''}
+          >
+            {response}
+          </button>
+        </div>
+      ));
+      return [
+        ...incorrectBtn, <button style={{ borderColor: 'rgb(6, 240, 15)' }} disabled type="correct-answer" >{correct}</button>,
+      ].sort(() => Math.floor(Math.random() * 3) - 1)
+    }
   }
 
   renderQuestions() {
@@ -61,16 +81,25 @@ class Game extends Component {
           <p data-testid="question-category">{eachQuestions.category}</p>
           <p data-testid="question-text">{eachQuestions.question}</p>
           {this.correctAnswer()}
-          <Timer status={dataQuestions.question} />
+          <Timer />
         </div>
-        <button
-          onClick={() => this.clicktNextQuestions()}
-          data-testid="btn-next"
-        >
-          Próxima
-        </button>
+        {this.renderNextButton()}
       </div>
     );
+  }
+
+  renderNextButton() {
+    if (this.state.answers) return (
+      <button
+        onClick={() => this.clicktNextQuestions()}
+        data-testid="btn-next"
+      >
+        Próxima
+      </button>
+    );
+    return (
+      <div>Responda</div>
+    )
   }
 
   render() {

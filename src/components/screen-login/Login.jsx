@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import './layout/Login.css';
 import { getTokenUser, getResultsQuestions } from '../../actions/a-token';
 
-
 class Login extends Component {
   render() {
     const tokenPlayer = async () => {
