@@ -4,11 +4,6 @@ import PropTypes from 'prop-types';
 import { timerCourse, stopTimer } from '../../actions/a_timer';
 
 class Timer extends Component {
-  componentWillReceiveProps(status) {
-    console.log(status)
-    if (this.props.state == status.status) return this.updateTimer()
-  }
-
   updateTimer(){
     const { setTime, stopTime } = this.props;
     let { timer } = this.props;
