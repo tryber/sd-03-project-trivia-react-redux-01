@@ -10,14 +10,14 @@ function getgravatar(hash, data, name) {
     <div>
       <div className="boxQuestion">
         <header className="boxWithPlayerName">
-          <img src={`https://www.gravatar.com/avatar/${hash}`} />
+          <img src={`https://www.gravatar.com/avatar/${hash}`} alt='ImgGravatar' />
           <p data-testid="header-player-name" >{name}</p>
         </header>
         {data.map((e) => (
           <p className="categoryBar" key={e.category}>{e.category}</p>
         ))}
-        <p data-testid="question-category"></p>
-        <p data-testid="question-text"></p>
+        <p data-testid="question-category" />
+        <p data-testid="question-text" />
       </div>
       <div>
         <button data-testid="correct-answer">Alternativas</button>
@@ -55,6 +55,8 @@ Game.propTypes = {
     category: PropTypes.string,
     difficulty: PropTypes.string,
     question: PropTypes.string,
+    name: PropTypes.string,
+    email: PropTypes.string,
   }).isRequired,
 };
 
