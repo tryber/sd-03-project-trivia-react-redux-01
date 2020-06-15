@@ -9,10 +9,10 @@ function getgravatar(hash, data, name) {
   return (
     <div>
       <div className="boxQuestion">
-        <div className="boxWithPlayerName">
+        <header className="boxWithPlayerName">
           <img src={`https://www.gravatar.com/avatar/${hash}`} />
           <p data-testid="header-player-name" >{name}</p>
-        </div>
+        </header>
         {data.map((e) => (
           <p className="categoryBar" key={e.category}>{e.category}</p>
         ))}

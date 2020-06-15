@@ -13,6 +13,56 @@ class Login extends Component {
       email: '',
     };
     this.changeFunc = this.changeFunc.bind(this);
+    this.inputNameEmail = this.inputNameEmail.bind(this);
+    this.buttonDisabled = this.buttonDisabled.bind(this);
+    this.buttonPlay = this.buttonPlay.bind(this);
+  }
+
+  inputNameEmail(name, email) {
+    return (
+      <div>
+        <input
+          data-testid="input-gravatar-email"
+          className="boxN"
+          type="email"
+          onChange={(event) => this.changeFunc(event, 'email')}
+          value={email}
+          placeholder='Email'
+        />
+        <input
+          data-testid="input-player-name"
+          className="boxN" type="text"
+          onChange={(event) => this.changeFunc(event, 'name')}
+          value={name}
+          placeholder='Nome Jogador'
+        />
+      </div>
+    );
+  }
+
+  buttonDisabled(tokenPlayer) {
+    return (
+      <button
+        className="buttonPlay"
+        type="button"
+        data-testid="btn-play"
+        onClick={() => tokenPlayer()}
+        disabled
+      >Jogar
+      </button>
+    )
+  }
+
+  buttonPlay(tokenPlayer) {
+    return (
+      <button
+        className="buttonPlay"
+        type="button"
+        data-testid="btn-play"
+        onClick={() => tokenPlayer()}>
+        Jogar
+      </button>
+    )
   }
 
   changeFunc(event, field) {
@@ -24,7 +74,6 @@ class Login extends Component {
   render() {
     const { name, email } = this.state;
     const tokenPlayer = async () => {
-      const { name, email } = this.state;
       const token = await this.props.requestApiToken();
       localStorage.setItem('token', token.token);
       this.props.requestNameEmail(name, email);
@@ -32,42 +81,15 @@ class Login extends Component {
     return (
       <div className="cardText">
         <div className="boxDirection">
-          <input
-            data-testid="input-gravatar-email"
-            className="boxN"
-            type="email"
-            onChange={(event) => this.changeFunc(event, 'email')}
-            value={email}
-            placeholder='Email'
-          />
-          <input
-            data-testid="input-player-name"
-            className="boxN" type="text"
-            onChange={(event) => this.changeFunc(event, 'name')}
-            value={name}
-            placeholder='Nome Jogador'
-          />
+          {this.inputNameEmail()}
           {
             name === '' || email === '' ?
               <Link to="/game">
-                <button
-                  className="buttonPlay"
-                  type="button"
-                  data-testid="btn-play"
-                  onClick={() => tokenPlayer()}
-                  disabled
-                >Jogar
-             </button>
+                {this.buttonDisabled(tokenPlayer)}
               </Link>
               :
               <Link to="/game">
-                <button
-                  className="buttonPlay"
-                  type="button"
-                  data-testid="btn-play"
-                  onClick={() => tokenPlayer()}>
-                  Jogar
-             </button>
+                {this.buttonPlay(tokenPlayer)}
               </Link>
           }
           <Link>
