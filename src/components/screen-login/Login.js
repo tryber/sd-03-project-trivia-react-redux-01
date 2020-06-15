@@ -24,14 +24,14 @@ class Login extends Component {
           data-testid="input-gravatar-email"
           className="boxN"
           type="email"
-          onChange={(event) => this.changeFunc(event, "email")}
+          onChange={(event) => this.changeFunc(event, 'email')}
           value={email}
           placeholder="Email"
         />
         <input
           data-testid="input-player-name"
           className="boxN" type="text"
-          onChange={(event) => this.changeFunc(event, "name")}
+          onChange={(event) => this.changeFunc(event, 'name')}
           value={name}
           placeholder="Nome Jogador"
         />
@@ -39,7 +39,7 @@ class Login extends Component {
     );
   }
 
-  buttonDisabled() {
+  buttonDisabled(tokenPlayer) {
     return (
       <button
         className="buttonPlay"
@@ -74,7 +74,7 @@ class Login extends Component {
   render() {
     const { name, email } = this.state;
     const tokenPlayer = async () => {
-      const token = await this.props.requestApiToken();
+      const token = await this.requestApiToken();
       localStorage.setItem('token', token.token);
       this.requestNameEmail(name, email);
     };

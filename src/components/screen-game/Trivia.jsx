@@ -32,9 +32,9 @@ class Game extends Component {
     const { data, name, email } = this.props;
     const hash = CryptoJS.MD5(email);
     return (
-      <>
+      <div>
         {getgravatar(hash, data, name)}
-      </>
+      </div>
     );
   }
 }
