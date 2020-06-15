@@ -74,7 +74,7 @@ class Login extends Component {
   render() {
     const { name, email } = this.state;
     const tokenPlayer = async () => {
-      const token = await this.requestApiToken();
+      const token = await this.props.requestApiToken();
       localStorage.setItem('token', token.token);
       this.requestNameEmail(name, email);
     };
