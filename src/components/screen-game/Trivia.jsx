@@ -7,11 +7,7 @@ import { timerCourse } from '../../actions/a_timer';
 import Timer from '../screen-game/Timer';
 import '../screen-game/cardgame.css';
 
-/* const borderColor = (type) => {
-  if (type === 'correct-answer') return 'rgb(6, 240, 15)';
-  return 'rgb(255, 0, 0)';
-};
- */
+const CryptoJS = require('crypto-js');
 
 class Game extends Component {
   constructor(props) {
@@ -36,7 +32,7 @@ class Game extends Component {
     const incorrectBtn = incorrect.map((response, index) => (
       <div>
         <button
-          /* style={true ? { border: `3px solid ${borderColor('type')}` } : {}} */
+
           data-testid={`wrong-answer-${index}`}
         >
           {response}
@@ -49,15 +45,18 @@ class Game extends Component {
     ].sort(() => Math.floor(Math.random() * 3) - 1);
   }
 
-  renderQuestions() {
+  renderQuestions(name) {
     const { dataQuestions } = this.props;
     const eachQuestions = dataQuestions[this.state.questionIndex];
     if (dataQuestions.length === 0) return <div>Loading...</div>;
     if (eachQuestions == null) return <Redirect to="/feedback" />;
+    console.log(dataQuestions);
+    const hash = CryptoJS.MD5(this.props.email);
     return (
       <div>
         <div className="boxQuestion">
-          <div className="boxWithPlayerName">Nome do jogador</div>
+          <img src={`https://www.gravatar.com/avatar/${hash}`} alt="ImgGravatar" />
+          <div className="boxWithPlayerName">{name}</div>
           <p data-testid="question-category">{eachQuestions.category}</p>
           <p data-testid="question-text">{eachQuestions.question}</p>
           {this.correctAnswer()}
@@ -84,6 +83,8 @@ class Game extends Component {
 
 const mapState = (state) => ({
   dataQuestions: state.tokenAndQuestions.data,
+  name: state.tokenAndQuestions.name,
+  email: state.tokenAndQuestions.email,
 });
 
 const mapDispatch = (dispatch) => ({
@@ -96,6 +97,7 @@ Game.propTypes = {
     difficulty: PropTypes.string,
     question: PropTypes.string,
   }).isRequired,
+  email: PropTypes.string.isRequired,
 };
 
 export default connect(mapState, mapDispatch)(Game);

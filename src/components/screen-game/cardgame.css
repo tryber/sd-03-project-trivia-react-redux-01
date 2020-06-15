@@ -123,8 +123,7 @@
 .boxQuestion {
   background-color: white;
   border: 1px solid black;
-  flex-wrap: nowrap;
+  display: flex;
   height: 300px;
-  margin-left: 500px;
-  width: 377px;
+  justify-content: space-around;
 }
