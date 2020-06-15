@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+/* import PropTypes from 'prop-types'; */
+
 import './layout/Login.css';
 import { getTokenUser, getResultsQuestions, getNameEmail } from '../../actions/a-token';
 
 class Login extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -79,13 +80,16 @@ class Login extends Component {
     const { name, email } = this.state;
     const tokenPlayer = async () => {
       const token = await this.props.requestApiToken();
+      const questions = await this.props.requestApiQuestions();
+      console.log(questions);
       localStorage.setItem('token', token.token);
-      this.requestNameEmail(name, email);
+      this.props.requestNameEmail(name, email);
     };
+
     return (
       <div className="cardText">
         <div className="boxDirection">
-          {this.inputNameEmail()}
+          {this.inputNameEmail(name, email)}
           {
             name === '' || email === '' ?
               <Link to="/game">
