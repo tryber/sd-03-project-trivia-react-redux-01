@@ -3,34 +3,45 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import '../screen-game/cardgame.css';
 
+const CryptoJS = require('crypto-js');
+
+function getgravatar(hash, data, name) {
+  return (
+    <div>
+      <div className="boxQuestion">
+        <div className="boxWithPlayerName">
+          <img src={`https://www.gravatar.com/avatar/${hash}`} />
+          <p data-testid="header-player-name" >{name}</p>
+        </div>
+        {data.map((e) => (
+          <p className="categoryBar" key={e.category}>{e.category}</p>
+        ))}
+        <p data-testid="question-category"></p>
+        <p data-testid="question-text"></p>
+      </div>
+      <div>
+        <button data-testid="correct-answer">Alternativas</button>
+        <button data-testid="wrong-answer">Alternativa incorretas</button>
+      </div>
+      <button data-testid="btn-next">Proxima</button>
+    </div>
+  );
+}
+
 class Game extends Component {
   render() {
-    const { data } = this.props;
-
-    console.log('perguntas', data[0]);
-
+    const { data, name, email } = this.props;
+    const hash = CryptoJS.MD5(email);
     return (
-      <div>
-        <div className="boxQuestion">
-          <div className="boxWithPlayerName">nome do jogador</div>
-          {data.map((e) => (
-            <p className="categoryBar" key={e.category}>{e.category}</p>
-          ))}
-          <p data-testid="question-category">a</p>
-          <p data-testid="question-text">a</p>
-        </div>
-        <div>
-          <button data-testid="correct-answer">Alternativas</button>
-          <button data-testid="wrong-answer">Alternativa incorretas</button>
-        </div>
-        <button data-testid="btn-next">Proxima</button>
-      </div>
+      <>{getgravatar(hash, data, name)}</>
     );
   }
 }
 
 const mapState = (state) => ({
   data: state.tokenAndQuestions.data,
+  name: state.tokenAndQuestions.name,
+  email: state.tokenAndQuestions.email,
 });
 
 // const mapDispatch = (dispatch) => ({

@@ -1,11 +1,10 @@
 .cardText {
+  align-items: center;
   background-color: white;
   border: 1px solid black;
   display: flex;
   height: 300px;
   justify-content: space-around;
-  margin-left: 500px;
-  width: 377px;
 }
 
 .boxDirection {
