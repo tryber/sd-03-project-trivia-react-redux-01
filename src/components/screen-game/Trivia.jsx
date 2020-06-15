@@ -1,3 +1,4 @@
+import { Redirect } from 'react-router-dom';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -12,20 +13,6 @@ import '../screen-game/cardgame.css';
 };
  */
 
-  const shufflesQuestions = async (incorrect) => {
-  let lose = await [...incorrect]
-    this.lose.split('')
-    let n = lose.length;
-
-  for (let i = n - 1; i > 0; i--) {
-    let j = Math.floor(Math.random() * (i + 1));
-    let tmp = lose[i];
-    lose[i] = lose[j];
-    lose[j] = tmp;
-  }
-  return lose.join('');
-}
-
 class Game extends Component {
   constructor(props) {
     super(props);
@@ -38,7 +25,7 @@ class Game extends Component {
     this.clicktNextQuestions = this.clicktNextQuestions.bind(this);
   }
 
-  clicktNextQuestions() {
+  clicktNextQuestions() {   
     return this.setState((state) => ({ questionIndex: state.questionIndex + 1 }));
   }
 
@@ -59,14 +46,14 @@ class Game extends Component {
     );
     return [
       ...incorrectBtn, <button type="correct-answer" >{correct}</button>,
-      shufflesQuestions(incorrect)
-    ]
+    ].sort(() => Math.floor(Math.random() * 3) - 1)
   }
 
   renderQuestions() {
     const { dataQuestions, } = this.props;
     const eachQuestions = dataQuestions[this.state.questionIndex];
     if (dataQuestions.length === 0) return <div>Loading...</div>;
+    if (eachQuestions == null) return <Redirect to='/feedback' />
     return (
       <div>
         <div className="boxQuestion">
@@ -74,7 +61,7 @@ class Game extends Component {
           <p data-testid="question-category">{eachQuestions.category}</p>
           <p data-testid="question-text">{eachQuestions.question}</p>
           {this.correctAnswer()}
-          <Timer />
+          <Timer status={dataQuestions.question} />
         </div>
         <button
           onClick={() => this.clicktNextQuestions()}
@@ -84,10 +71,6 @@ class Game extends Component {
         </button>
       </div>
     );
-  }
-
-  randomQuestions = (min, max) => {
-    return Math.ceil(Math.random() * max)
   }
 
   render() {
