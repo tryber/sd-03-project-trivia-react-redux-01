@@ -51,7 +51,7 @@ class Game extends Component {
     if (dataQuestions.length === 0) return <div>Loading...</div>;
     if (eachQuestions == null) return <Redirect to="/feedback" />;
     console.log(dataQuestions);
-    const hash = CryptoJS.MD5(this.props.email)
+    const hash = CryptoJS.MD5(this.props.email);
     return (
       <div>
         <div className="boxQuestion">
@@ -92,8 +92,6 @@ const mapDispatch = (dispatch) => ({
 });
 
 Game.propTypes = {
-  name: PropTypes.string,
-  email: PropTypes.string,
   data: PropTypes.shape({
     category: PropTypes.string,
     difficulty: PropTypes.string,
