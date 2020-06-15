@@ -64,8 +64,15 @@ class Game extends Component {
         </div>
       ));
       return [
-        ...incorrectBtn, <button style={{ borderColor: 'rgb(6, 240, 15)' }} disabled type="correct-answer" >{correct}</button>,
-      ].sort(() => Math.floor(Math.random() * 3) - 1)
+        ...incorrectBtn,
+        <button
+          style={{ borderColor: 'rgb(6, 240, 15)' }}
+          disabled
+          type="correct-answer"
+        >
+          {correct}
+        </button>,
+      ].sort(() => Math.floor(Math.random() * 3) - 1);
     }
   }
 
@@ -89,7 +96,7 @@ class Game extends Component {
   }
 
   renderNextButton() {
-    if (this.state.answers) return (
+    if (this.state.answers === true) return (
       <button
         onClick={() => this.clicktNextQuestions()}
         data-testid="btn-next"
@@ -99,7 +106,7 @@ class Game extends Component {
     );
     return (
       <div>Responda</div>
-    )
+    );
   }
 
   render() {
