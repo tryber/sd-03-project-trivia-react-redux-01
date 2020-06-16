@@ -16,7 +16,7 @@
 }
 
 .boxWithPlayerName {
-  height: 20px; 
+  height: 20px;
   width: 377px;
   font-size: 200px;
   border: solid 1px black;
@@ -113,7 +113,6 @@
 .categoryBar {
   border: solid black 1px;
   display: flex;
-  margin-top: 0px;
 }
 
 .boxQuestion {
@@ -124,12 +123,12 @@
   justify-content: space-around;
 }
 
-.ImgGr{
-  width: 100px;
+.ImgGr {
   height: 100px;
+  width: 100px;
 }
 
-.buttonCs{
+.buttonCs {
   display: flex;
   flex-wrap: nowrap;
   float: left;
