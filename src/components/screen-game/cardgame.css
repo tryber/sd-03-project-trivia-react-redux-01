@@ -16,10 +16,10 @@
 }
 
 .boxWithPlayerName {
+  border: solid 1px black;
+  font-size: 200px;
   height: 20px;
   width: 377px;
-  font-size: 200px;
-  border: solid 1px black;
 }
 
 .QuestionsBox {

@@ -30,7 +30,7 @@ class Game extends Component {
     return [
       ...incorrectBtn,
       <button
-        className='buttonCs'
+        className="buttonCs"
         onClick={() => this.setState({ answers: true })}
         type="correct-answer"
       >
@@ -44,7 +44,7 @@ class Game extends Component {
     return [
       ...incorrectBtn,
       <button
-        className='buttonCs'
+        className="buttonCs"
         style={{ borderColor: 'rgb(6, 240, 15)' }}
         disabled
         type="correct-answer"
