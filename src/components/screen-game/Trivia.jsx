@@ -31,17 +31,19 @@ class Game extends Component {
   }
 
   responseTrue(incorrectBtn, correct) {
-    return [...incorrectBtn,
-    <button
-      onClick={() => this.setState({ answers: true })}
-      type="correct-answer"
-    >
-      {correct}
-    </button>,
-    ].sort(() => Math.floor(Math.random() * 3) - 1)
+    return [
+      ...incorrectBtn,
+      <button
+        onClick={() => this.setState({ answers: true })}
+        type="correct-answer"
+      >
+        {correct}
+      </button>,
+    ].sort(() => Math.floor(Math.random() * 3) - 1);
   }
 
   responseFalse(incorrectBtn, correct) {
+    console.log(this);
     return [
       ...incorrectBtn,
       <button
@@ -83,7 +85,7 @@ class Game extends Component {
         </button>
       </div>
     ));
-    return this.responseFalse(incorrectBtn, correct)
+    return this.responseFalse(incorrectBtn, correct);
   }
 
   renderQuestions() {
@@ -106,7 +108,7 @@ class Game extends Component {
   }
 
   renderNextButton() {
-    if (!this.state.answers === false) return (
+    if (this.state.answers) return (
       <button
         onClick={() => this.clicktNextQuestions()}
         data-testid="btn-next"
