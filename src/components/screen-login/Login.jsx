@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 /* import PropTypes from 'prop-types'; */
@@ -94,7 +94,7 @@ class Login extends Component {
             name === '' || email === '' ?
                 this.buttonDisabled(tokenPlayer)
               :
-               <Link to="/game">{this.buttonPlay(tokenPlayer)}</Link> 
+                <Link to="/game">{this.buttonPlay(tokenPlayer)}</Link> 
           }
           <Link to="/config">
             <button data-testid="btn-settings" className="config">Configurações</button>
