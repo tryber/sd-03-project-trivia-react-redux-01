@@ -22,9 +22,8 @@ class Login extends Component {
 
   inputNameEmail(name, email) {
     return (
-      <div>
+      <header>
         <input
-          data-testid="input-gravatar-email"
           className="boxN"
           type="email"
           onChange={(event) => this.changeFunc(event, 'email')}
@@ -38,7 +37,7 @@ class Login extends Component {
           value={name}
           placeholder="Nome Jogador"
         />
-      </div>
+      </header>
     );
   }
 

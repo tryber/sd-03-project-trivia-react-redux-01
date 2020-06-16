@@ -30,6 +30,7 @@ class Game extends Component {
     return [
       ...incorrectBtn,
       <button
+      className='buttonCs'
         onClick={() => this.setState({ answers: true })}
         type="correct-answer"
       >
@@ -43,6 +44,7 @@ class Game extends Component {
     return [
       ...incorrectBtn,
       <button
+      className='buttonCs'
         style={{ borderColor: 'rgb(6, 240, 15)' }}
         disabled
         type="correct-answer"
@@ -60,6 +62,7 @@ class Game extends Component {
       const incorrectBtn = incorrect.map((response, index) => (
         <div>
           <button
+          className='buttonCs'
             data-testid={`wrong-answer-${index}`}
             onClick={() => this.setState({ answers: true })}
           >
@@ -73,6 +76,7 @@ class Game extends Component {
       <div>
         <button
           disabled
+          className='buttonCs'
           style={{ borderColor: 'rgb(255, 0, 0)' }}
           data-testid={`wrong-answer-${index}`}
           onClick={''}
@@ -94,10 +98,12 @@ class Game extends Component {
     return (
       <div>
         <div className="boxQuestion">
-          <img src={`https://www.gravatar.com/avatar/${hash}`} alt="ImgGravatar" />
+          <img src={`https://www.gravatar.com/avatar/${hash}`} alt="ImgGravatar" className='ImgGr'/>
           <div className="boxWithPlayerName">{name}</div>
-          <p data-testid="question-category">{eachQuestions.category}</p>
-          <p data-testid="question-text">{eachQuestions.question}</p>
+          <div>
+          <p data-testid="question-category" className='categoryBar'>{eachQuestions.category}</p>
+          <p data-testid="question-text" className='textQuestion'>{eachQuestions.question}</p>
+          </div>
           {this.correctAnswer()}
           <Timer />
         </div>

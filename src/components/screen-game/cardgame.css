@@ -16,10 +16,10 @@
 }
 
 .boxWithPlayerName {
-  background: gray;
-  height: 20px;
-  position: absolute;
+  height: 20px; 
   width: 377px;
+  font-size: 200px;
+  border: solid 1px black;
 }
 
 .QuestionsBox {
@@ -31,11 +31,9 @@
 
 .textQuestion {
   color: black;
-  font-size: 30px;
+  font-size: 20px;
   height: 215px;
   line-height: 35px;
-  position: absolute;
-  width: 273px;
 }
 
 .photoDefault {
@@ -115,9 +113,7 @@
 .categoryBar {
   border: solid black 1px;
   display: flex;
-  height: 20px;
-  margin-top: 30px;
-  width: auto;
+  margin-top: 0px;
 }
 
 .boxQuestion {
@@ -126,4 +122,17 @@
   display: flex;
   height: 300px;
   justify-content: space-around;
+}
+
+.ImgGr{
+  width: 100px;
+  height: 100px;
+}
+
+.buttonCs{
+  display: flex;
+  flex-wrap: nowrap;
+  float: left;
+  height: 40px;
+  width: 100px;
 }
