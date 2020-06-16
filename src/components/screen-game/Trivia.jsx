@@ -7,11 +7,7 @@ import { timerCourse } from '../../actions/a_timer';
 import Timer from '../screen-game/Timer';
 import '../screen-game/cardgame.css';
 
-// switch(difficulty) {
-//   case 'hard': return 3;
-//   case 'medium': return 2;
-//   case 'easy': return 1;
-// }
+const CryptoJS = require('crypto-js');
 
 class Game extends Component {
   constructor(props) {
@@ -88,15 +84,18 @@ class Game extends Component {
     return this.responseFalse(incorrectBtn, correct);
   }
 
-  renderQuestions() {
+  renderQuestions(name) {
     const { dataQuestions } = this.props;
     const eachQuestions = dataQuestions[this.state.questionIndex];
     if (dataQuestions.length === 0) return <div>Loading...</div>;
     if (eachQuestions == null) return <Redirect to="/feedback" />;
+    console.log(dataQuestions);
+    const hash = CryptoJS.MD5(this.props.email);
     return (
       <div>
         <div className="boxQuestion">
-          <div className="boxWithPlayerName">Nome do jogador</div>
+          <img src={`https://www.gravatar.com/avatar/${hash}`} alt="ImgGravatar" />
+          <div className="boxWithPlayerName">{name}</div>
           <p data-testid="question-category">{eachQuestions.category}</p>
           <p data-testid="question-text">{eachQuestions.question}</p>
           {this.correctAnswer()}
@@ -109,7 +108,7 @@ class Game extends Component {
 
   renderNextButton() {
     const { answers } = this.state;
-    if (!answers === false) return (
+    if (answers ==! undefined) return (
       <button
         onClick={() => this.clicktNextQuestions()}
         data-testid="btn-next"
@@ -133,6 +132,8 @@ class Game extends Component {
 
 const mapState = (state) => ({
   dataQuestions: state.tokenAndQuestions.data,
+  name: state.tokenAndQuestions.name,
+  email: state.tokenAndQuestions.email,
 });
 
 const mapDispatch = (dispatch) => ({
@@ -145,6 +146,7 @@ Game.propTypes = {
     difficulty: PropTypes.string,
     question: PropTypes.string,
   }).isRequired,
+  email: PropTypes.string.isRequired,
 };
 
 export default connect(mapState, mapDispatch)(Game);
