@@ -61,7 +61,7 @@ class Game extends Component {
     if (!this.state.answers) {
       const incorrectBtn = incorrect.map((response, index) => (
         <div>
-          <button className="buttonCs"
+          <button
             data-testid={`wrong-answer-${index}`}
             onClick={() => this.setState({ answers: true })}
           >
