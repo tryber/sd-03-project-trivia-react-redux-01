@@ -79,9 +79,10 @@ class Login extends Component {
 
   renderRedirect() {
     if (this.state.redirect) {
-    return <Redirect to="/game"/>  }
+      return (<Redirect to="/game"/>);
+    }
   }
- 
+
   render() {
     const { name, email } = this.state;
     const tokenPlayer = async () => {
@@ -90,7 +91,7 @@ class Login extends Component {
       console.log(questions);
       localStorage.setItem('token', token.token);
       this.props.requestNameEmail(name, email);
-      this.setState({redirect: true})
+      this.setState({ redirect: true });
     };
 
     return (
