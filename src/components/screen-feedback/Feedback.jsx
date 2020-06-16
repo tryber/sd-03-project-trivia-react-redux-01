@@ -14,7 +14,7 @@ class Feedback extends Component {
         {num <= 3 ? <h1>Podia ser melhor...</h1> : <h1>Mandou bem!</h1>}
         {`Você acertou ${num} questões!
           Um total de ${score} pontos!`}
-        <button>VER RANKING</button>
+        <button><Link to="/hanking">VER RANKING</Link></button>
         <Link to="/">
           <button
             data-testid="btn-play-again"

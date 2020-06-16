@@ -79,7 +79,6 @@ class Game extends Component {
           className="buttonCs"
           style={{ borderColor: 'rgb(255, 0, 0)' }}
           data-testid={`wrong-answer-${index}`}
-          onClick={''}
         >
           {response}
         </button>
