@@ -99,7 +99,6 @@ class Game extends Component {
       <div>
         <header className="boxQuestion">
           <img src={`https://www.gravatar.com/avatar/${hash}`} alt="ImgG" className="Img" />
-          <div className="boxWithPlayerName">{name}</div>
           <div>
             <p data-testid="question-category" className="categoryBar">{eachQuestions.category}</p>
             <p data-testid="question-text" className="textQuestion">{eachQuestions.question}</p>
