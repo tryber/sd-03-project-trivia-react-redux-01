@@ -77,7 +77,7 @@ class Login extends Component {
     });
   }
 
-  renderRedirect = () => {
+  renderRedirect() {
     if (this.state.redirect) {
     return <Redirect to="/game"/>  }
   }
