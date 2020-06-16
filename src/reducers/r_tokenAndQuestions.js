@@ -1,7 +1,9 @@
-import { GET_TOKEN, REQUEST_API, GET_QUESTIONS } from '../actions/a-token';
+import { GET_TOKEN, REQUEST_API, GET_QUESTIONS, GET_NAME_EMAIL } from '../actions/a-token';
 
 const INITIAL_STATE = {
   data: [],
+  name: '',
+  email: '',
   token: '',
   isFetching: false,
 };
@@ -23,6 +25,12 @@ const tokenAndQuestions = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         data: action.data,
+      };
+    case GET_NAME_EMAIL:
+      return {
+        ...state,
+        name: action.name,
+        email: action.email,
       };
     default:
       return state;
