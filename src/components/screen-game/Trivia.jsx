@@ -30,6 +30,30 @@ class Game extends Component {
     return this.setState((state) => ({ questionIndex: state.questionIndex + 1, answers: false }));
   }
 
+  responseTrue(incorrectBtn, correct) {
+    return [...incorrectBtn,
+    <button
+      onClick={() => this.setState({ answers: true })}
+      type="correct-answer"
+    >
+      {correct}
+    </button>,
+    ].sort(() => Math.floor(Math.random() * 3) - 1)
+  }
+
+  responseFalse(incorrectBtn, correct) {
+    return [
+      ...incorrectBtn,
+      <button
+        style={{ borderColor: 'rgb(6, 240, 15)' }}
+        disabled
+        type="correct-answer"
+      >
+        {correct}
+      </button>,
+    ].sort(() => Math.floor(Math.random() * 3) - 1);
+  }
+
   correctAnswer() {
     const { dataQuestions } = this.props;
     const alternatives = dataQuestions[this.state.questionIndex];
@@ -45,35 +69,21 @@ class Game extends Component {
           </button>
         </div>
       ));
-      return [
-        ...incorrectBtn, <button
-          onClick={() => this.setState({ answers: true })}
-          type="correct-answer" >{correct}</button>,
-      ].sort(() => Math.floor(Math.random() * 3) - 1);
-    } else {
-      const incorrectBtn = incorrect.map((response, index) => (
-        <div>
-          <button
-            disabled
-            style={{ borderColor: 'rgb(255, 0, 0)' }}
-            data-testid={`wrong-answer-${index}`}
-            onClick={''}
-          >
-            {response}
-          </button>
-        </div>
-      ));
-      return [
-        ...incorrectBtn,
-        <button
-          style={{ borderColor: 'rgb(6, 240, 15)' }}
-          disabled
-          type="correct-answer"
-        >
-          {correct}
-        </button>,
-      ].sort(() => Math.floor(Math.random() * 3) - 1);
+      return this.responseTrue(incorrectBtn, correct);
     }
+    const incorrectBtn = incorrect.map((response, index) => (
+      <div>
+        <button
+          disabled
+          style={{ borderColor: 'rgb(255, 0, 0)' }}
+          data-testid={`wrong-answer-${index}`}
+          onClick={''}
+        >
+          {response}
+        </button>
+      </div>
+    ));
+    return this.responseFalse(incorrectBtn, correct)
   }
 
   renderQuestions() {
@@ -96,7 +106,7 @@ class Game extends Component {
   }
 
   renderNextButton() {
-    if (this.state.answers === true) return (
+    if (!this.state.answers === false) return (
       <button
         onClick={() => this.clicktNextQuestions()}
         data-testid="btn-next"
