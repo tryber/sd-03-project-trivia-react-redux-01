@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Header from '../header/Header';
 
 
@@ -14,8 +15,8 @@ class Feedback extends Component {
         {num <= 3 ? <h1>Podia ser melhor...</h1> : <h1>Mandou bem!</h1>}
         {`Você acertou ${num} questões!
           Um total de ${score} pontos!`}
-        <button>VER RANKING</button>
-        <button>JOGAR NOVAMENTE</button>
+        <button><Link to="/hanking">VER RANKING</Link></button>
+        <button><Link to="/">JOGAR NOVAMENTE</Link></button>
       </div>
     );
   }

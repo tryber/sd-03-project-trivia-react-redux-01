@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 /* import PropTypes from 'prop-types'; */
@@ -13,6 +13,7 @@ class Login extends Component {
     this.state = {
       name: '',
       email: '',
+      redirect: false,
     };
     this.changeFunc = this.changeFunc.bind(this);
     this.inputNameEmail = this.inputNameEmail.bind(this);
@@ -76,6 +77,11 @@ class Login extends Component {
     });
   }
 
+  renderRedirect = () => {
+    if (this.state.redirect) {
+    return <Redirect to="/game"/>  }
+  }
+ 
   render() {
     const { name, email } = this.state;
     const tokenPlayer = async () => {
@@ -84,21 +90,19 @@ class Login extends Component {
       console.log(questions);
       localStorage.setItem('token', token.token);
       this.props.requestNameEmail(name, email);
+      this.setState({redirect: true})
     };
 
     return (
       <div className="cardText">
         <div className="boxDirection">
           {this.inputNameEmail(name, email)}
+          {this.renderRedirect()}
           {
             name === '' || email === '' ?
-              <Link to="/game">
-                {this.buttonDisabled(tokenPlayer)}
-              </Link>
+                this.buttonDisabled(tokenPlayer)
               :
-              <Link to="/game">
-                {this.buttonPlay(tokenPlayer)}
-              </Link>
+                this.buttonPlay(tokenPlayer)
           }
           <Link>
             <button data-testid="btn-settings" className="config">Configurações</button>
