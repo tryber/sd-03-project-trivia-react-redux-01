@@ -6,6 +6,7 @@ import Login from '../src/components/screen-login/Login.jsx';
 import Hanking from './components/sreen-hanking/Hanking';
 import Game from './components/screen-game/Trivia';
 import Feedback from './components/screen-feedback/Feedback';
+import Config from './components/screen-feedback/Config';
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
         <Route exact path="/hanking" component={Hanking} />
         <Route exact path="/game" component={Game} />
         <Route exact path="/feedback" component={Feedback} />
+        <Route exact path="/config" component={Config} />
       </Switch>
     </BrowserRouter>
   );
