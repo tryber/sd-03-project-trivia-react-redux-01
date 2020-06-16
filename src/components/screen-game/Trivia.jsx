@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { timerCourse } from '../../actions/a_timer';
 import Timer from '../screen-game/Timer';
 import '../screen-game/cardgame.css';
+import Header from '../header/Header';
 
 const CryptoJS = require('crypto-js');
 
@@ -126,6 +127,7 @@ class Game extends Component {
   render() {
     return (
       <div>
+        <Header />
         {this.renderQuestions()}
       </div>
     );
