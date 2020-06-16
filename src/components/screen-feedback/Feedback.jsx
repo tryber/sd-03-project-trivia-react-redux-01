@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Header from '../header/Header';
 
-
 class Feedback extends Component {
   render() {
     const num = this.props.correct;
@@ -17,7 +16,10 @@ class Feedback extends Component {
           Um total de ${score} pontos!`}
         <button>VER RANKING</button>
         <Link to="/">
-          <button>JOGAR NOVAMENTE</button>
+          <button data-testid="btn-play-again"
+          >
+            JOGAR NOVAMENTE
+          </button>
         </Link>
       </div>
     );
