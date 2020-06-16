@@ -109,14 +109,15 @@ class Game extends Component {
 
   renderNextButton() {
     const { answers } = this.state;
-    if (!answers === false) return (
+    if (answers) { 
+      return (
       <button
         onClick={() => this.clicktNextQuestions()}
         data-testid="btn-next"
       >
         Próxima
       </button>
-    );
+    )}
     return (
       <div>Responda</div>
     );
