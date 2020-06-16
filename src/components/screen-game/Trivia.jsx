@@ -7,17 +7,14 @@ import { timerCourse } from '../../actions/a_timer';
 import Timer from '../screen-game/Timer';
 import '../screen-game/cardgame.css';
 
-/* const borderColor = (type) => {
-  if (type === 'correct-answer') return 'rgb(6, 240, 15)';
-  return 'rgb(255, 0, 0)';
-};
- */
+const CryptoJS = require('crypto-js');
 
 class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
       questionIndex: 0,
+      answers: false,
     };
 
     this.correctAnswer = this.correctAnswer.bind(this);
@@ -26,50 +23,103 @@ class Game extends Component {
   }
 
   clicktNextQuestions() {
-    return this.setState((state) => ({ questionIndex: state.questionIndex + 1 }));
+    return this.setState((state) => ({ questionIndex: state.questionIndex + 1, answers: false }));
+  }
+
+  responseTrue(incorrectBtn, correct) {
+    return [
+      ...incorrectBtn,
+      <button
+        onClick={() => this.setState({ answers: true })}
+        type="correct-answer"
+      >
+        {correct}
+      </button>,
+    ].sort(() => Math.floor(Math.random() * 3) - 1);
+  }
+
+  responseFalse(incorrectBtn, correct) {
+    console.log(this);
+    return [
+      ...incorrectBtn,
+      <button
+        style={{ borderColor: 'rgb(6, 240, 15)' }}
+        disabled
+        type="correct-answer"
+      >
+        {correct}
+      </button>,
+    ].sort(() => Math.floor(Math.random() * 3) - 1);
   }
 
   correctAnswer() {
     const { dataQuestions } = this.props;
     const alternatives = dataQuestions[this.state.questionIndex];
     const { correct_answer: correct, incorrect_answers: incorrect } = alternatives;
+    if (!this.state.answers) {
+      const incorrectBtn = incorrect.map((response, index) => (
+        <div>
+          <button
+            data-testid={`wrong-answer-${index}`}
+            onClick={() => this.setState({ answers: true })}
+          >
+            {response}
+          </button>
+        </div>
+      ));
+      return this.responseTrue(incorrectBtn, correct);
+    }
     const incorrectBtn = incorrect.map((response, index) => (
       <div>
         <button
-          /* style={true ? { border: `3px solid ${borderColor('type')}` } : {}} */
+          disabled
+          style={{ borderColor: 'rgb(255, 0, 0)' }}
           data-testid={`wrong-answer-${index}`}
+          onClick={''}
         >
           {response}
         </button>
       </div>
-    ),
-    );
-    return [
-      ...incorrectBtn, <button type="correct-answer" >{correct}</button>,
-    ].sort(() => Math.floor(Math.random() * 3) - 1);
+    ));
+    return this.responseFalse(incorrectBtn, correct);
   }
 
-  renderQuestions() {
+  renderQuestions(name) {
     const { dataQuestions } = this.props;
     const eachQuestions = dataQuestions[this.state.questionIndex];
     if (dataQuestions.length === 0) return <div>Loading...</div>;
     if (eachQuestions == null) return <Redirect to="/feedback" />;
+    console.log(dataQuestions);
+    const hash = CryptoJS.MD5(this.props.email);
     return (
       <div>
         <div className="boxQuestion">
-          <div className="boxWithPlayerName">Nome do jogador</div>
+          <img src={`https://www.gravatar.com/avatar/${hash}`} alt="ImgGravatar" />
+          <div className="boxWithPlayerName">{name}</div>
           <p data-testid="question-category">{eachQuestions.category}</p>
           <p data-testid="question-text">{eachQuestions.question}</p>
           {this.correctAnswer()}
-          <Timer status={dataQuestions.question} />
+          <Timer />
         </div>
+        {this.renderNextButton()}
+      </div>
+    );
+  }
+
+  renderNextButton() {
+    const { answers } = this.state;
+    if (answers) {
+      return (
         <button
           onClick={() => this.clicktNextQuestions()}
           data-testid="btn-next"
         >
           Próxima
         </button>
-      </div>
+      );
+    }
+    return (
+      <div>Responda</div>
     );
   }
 
@@ -84,6 +134,8 @@ class Game extends Component {
 
 const mapState = (state) => ({
   dataQuestions: state.tokenAndQuestions.data,
+  name: state.tokenAndQuestions.name,
+  email: state.tokenAndQuestions.email,
 });
 
 const mapDispatch = (dispatch) => ({
@@ -96,6 +148,7 @@ Game.propTypes = {
     difficulty: PropTypes.string,
     question: PropTypes.string,
   }).isRequired,
+  email: PropTypes.string.isRequired,
 };
 
 export default connect(mapState, mapDispatch)(Game);
