@@ -18,7 +18,6 @@ class Timer extends Component {
     }, 1000));
   }
 
-
   render() {
     const { timer } = this.props;
     return (
