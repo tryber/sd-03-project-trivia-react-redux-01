@@ -75,7 +75,7 @@ class Login extends Component {
       [field]: event.target.value,
     });
   }
-
+  
   render() {
     const { name, email } = this.state;
     const tokenPlayer = async () => {
