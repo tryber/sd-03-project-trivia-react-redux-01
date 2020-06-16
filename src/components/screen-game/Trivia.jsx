@@ -96,8 +96,10 @@ class Game extends Component {
     const hash = CryptoJS.MD5(this.props.email);
     return (
       <div>
-        <div className="boxQuestion">
-          <img src={`https://www.gravatar.com/avatar/${hash}`} alt="ImgG" className="Img" />
+        <header className="boxQuestion">
+          <img src={`https://www.gravatar.com/avatar/${hash}`}
+            data-testid="profile-picture"
+            alt="ImgG" className="Img" />
           <div className="boxWithPlayerName">{name}</div>
           <div>
             <p data-testid="question-category" className="categoryBar">{eachQuestions.category}</p>
@@ -105,7 +107,7 @@ class Game extends Component {
           </div>
           {this.correctAnswer()}
           <Timer />
-        </div>
+        </header>
         {this.renderNextButton()}
       </div>
     );
