@@ -79,7 +79,7 @@ class Login extends Component {
     const { name, email } = this.state;
     const tokenPlayer = async () => {
       const token = await this.props.requestApiToken();
-      const questions = await this.props.requestApiQuestions();
+      const questions = this.props.requestApiQuestions();
       console.log(questions);
       localStorage.setItem('token', token.token);
       this.props.requestNameEmail(name, email);
@@ -99,7 +99,7 @@ class Login extends Component {
                 {this.buttonPlay(tokenPlayer)}
               </Link>
           }
-          <Link>
+          <Link to="/config">
             <button data-testid="btn-settings" className="config">Configurações</button>
           </Link>
         </div>
