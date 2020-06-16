@@ -94,7 +94,7 @@ class Login extends Component {
             name === '' || email === '' ?
                 this.buttonDisabled(tokenPlayer)
               :
-                <Link to="/game">{this.buttonPlay(tokenPlayer)}</Link> 
+                <Link to="/game">{this.buttonPlay(tokenPlayer)}</Link>
           }
           <Link to="/config">
             <button data-testid="btn-settings" className="config">Configurações</button>
