@@ -92,13 +92,9 @@ class Login extends Component {
           {this.inputNameEmail(name, email)}
           {
             name === '' || email === '' ?
-              <Link to="/game">
-                {this.buttonDisabled(tokenPlayer)}
-              </Link>
+                this.buttonDisabled(tokenPlayer)
               :
-              <Link to="/game">
-                {this.buttonPlay(tokenPlayer)}
-              </Link>
+                <Link to="/game">{this.buttonPlay(tokenPlayer)}</Link>
           }
           <Link to="/config">
             <button data-testid="btn-settings" className="config">Configurações</button>

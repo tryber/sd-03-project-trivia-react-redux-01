@@ -76,7 +76,6 @@ class Game extends Component {
           disabled
           style={{ borderColor: 'rgb(255, 0, 0)' }}
           data-testid={`wrong-answer-${index}`}
-          onClick={''}
         >
           {response}
         </button>
