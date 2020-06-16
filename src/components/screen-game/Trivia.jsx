@@ -87,7 +87,7 @@ class Game extends Component {
     return this.responseFalse(incorrectBtn, correct);
   }
 
-  renderQuestions(name) {
+  renderQuestions() {
     const { dataQuestions } = this.props;
     const eachQuestions = dataQuestions[this.state.questionIndex];
     if (dataQuestions.length === 0) return <div>Loading...</div>;
