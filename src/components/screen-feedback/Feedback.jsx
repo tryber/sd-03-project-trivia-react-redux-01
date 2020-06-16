@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Header from '../header/Header';
-
 
 class Feedback extends Component {
   render() {
@@ -15,7 +15,13 @@ class Feedback extends Component {
         {`Você acertou ${num} questões!
           Um total de ${score} pontos!`}
         <button>VER RANKING</button>
-        <button>JOGAR NOVAMENTE</button>
+        <Link to="/">
+          <button
+            data-testid="btn-play-again"
+          >
+          JOGAR NOVAMENTE
+          </button>
+        </Link>
       </div>
     );
   }
