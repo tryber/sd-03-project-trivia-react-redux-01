@@ -16,9 +16,10 @@ class Feedback extends Component {
           Um total de ${score} pontos!`}
         <button>VER RANKING</button>
         <Link to="/">
-          <button data-testid="btn-play-again"
+          <button
+            data-testid="btn-play-again"
           >
-            JOGAR NOVAMENTE
+          JOGAR NOVAMENTE
           </button>
         </Link>
       </div>
