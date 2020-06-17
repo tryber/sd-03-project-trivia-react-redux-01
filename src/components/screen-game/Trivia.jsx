@@ -142,7 +142,6 @@ class Game extends Component {
 
   renderQuestions(name) {
     const { dataQuestions } = this.props;
-    console.log('sera que existe', dataQuestions)
     const eachQuestions = dataQuestions[this.state.questionIndex];
     if (dataQuestions.length <= 0) return <div>Loading...</div>;
     if (eachQuestions == null) return <Redirect to="/feedback" />;
@@ -210,6 +209,8 @@ Game.propTypes = {
     question: PropTypes.string,
   }).isRequired,
   email: PropTypes.string.isRequired,
+  requestApiQuestions: PropTypes.func.isRequired,
+  requestApiToken: PropTypes.func.isRequired,
 };
 
 export default connect(mapState, mapDispatch)(Game);

@@ -18,6 +18,7 @@ class Login extends Component {
     this.inputNameEmail = this.inputNameEmail.bind(this);
     this.buttonDisabled = this.buttonDisabled.bind(this);
     this.buttonPlay = this.buttonPlay.bind(this);
+    this.saveInfo = this.saveInfo.bind(this);
   }
 
   inputNameEmail(name, email) {
@@ -42,7 +43,7 @@ class Login extends Component {
     );
   }
 
-  saveInfo = () => {
+  saveInfo() {
     const { email, name } = this.state;
     localStorage.setItem('state', JSON.stringify({
       player: {
