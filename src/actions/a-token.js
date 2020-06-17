@@ -3,7 +3,7 @@ import requestQuestionsAPI from '../service/QuestionsAPI';
 
 export const REQUEST_API = 'REQUEST_API';
 export const GET_TOKEN = 'GET_TOKEN_FROM_API';
-export const GET_QUESTIONS = 'GET_ARRAY_RESULTS';
+export const GET_QUESTIONS = 'GET_ARRAY_RESULTSwsiodasdjh';
 export const GET_NAME_EMAIL = 'GET_NAME_EMAIL_USER';
 
 export const getToken = (token) => ({
@@ -32,15 +32,15 @@ export function getTokenUser() {
     dispatch(requestApi());
 
     return requestTokenAPI()
-      .then((data) => dispatch(getToken(data.token)));
+      .then((token) => dispatch(getToken(token)));
   };
 }
 
-export function getResultsQuestions() {
+export function getResultsQuestions(token) {
   return (dispatch) => {
-    dispatch(getToken());
+    dispatch(getToken(token));
 
-    return requestQuestionsAPI()
+    return requestQuestionsAPI(token)
       .then((data) => dispatch(getResults(data)));
   };
 }
