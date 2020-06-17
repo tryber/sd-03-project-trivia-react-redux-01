@@ -18,7 +18,7 @@ class Hanking extends Component {
             <li data-testid={`player-score-${index}`}>{ponts}</li>
           </ul>
         ))}
-        <Link to="/home">
+        <Link to="/">
           <button data-testid="btn-go-home">
             Início
         </button>
