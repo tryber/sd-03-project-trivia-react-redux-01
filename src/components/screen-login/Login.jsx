@@ -109,6 +109,10 @@ class Login extends Component {
               <Link to="/game">
                 {this.buttonPlay()}
               </Link>
+
+                this.buttonDisabled(tokenPlayer)
+              :
+                <Link to="/game">{this.buttonPlay(tokenPlayer)}</Link>
           }
           <Link to="/config">
             <button data-testid="btn-settings" className="config">Configurações</button>
