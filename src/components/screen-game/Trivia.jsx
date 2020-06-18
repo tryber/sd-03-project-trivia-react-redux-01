@@ -29,9 +29,11 @@ class Game extends Component {
   componentDidMount() {
     const { requestApiToken, requestApiQuestions } = this.props;
     requestApiToken()
-      .then(({ token }) => localStorage.setItem('token', token.token));
+      .then(({ token }) => { localStorage.setItem('token', token.token);
+      requestApiQuestions(localStorage.getItem('token'));
+    });
 
-    requestApiQuestions(localStorage.getItem('token')).then(console.log('xablau nesse cypress'));
+   // requestApiQuestions(localStorage.getItem('token')).then(console.log('xablau nesse cypress'));
     // .then(requestApiQuestions(localStorage.getItem('token')));
     // console.log(requestApiQuestions())
   }
@@ -87,7 +89,7 @@ class Game extends Component {
       ...incorrectBtn,
       <button
         onClick={() => this.setState({ answers: true })}
-        type="correct-answer"
+        data-testid="correct-answer"
       >
         {correct}
       </button>,
@@ -99,9 +101,9 @@ class Game extends Component {
     return [
       ...incorrectBtn,
       <button
-        style={{ borderColor: 'rgb(6, 240, 15)' }}
+        style={{ border: '3px solid rgb(6, 240, 15)' }}
         disabled
-        type="correct-answer"
+        data-testid="correct-answer"
       >
         {correct}
       </button>,
@@ -116,7 +118,7 @@ class Game extends Component {
       const incorrectBtn = incorrect.map((response, index) => (
         <div>
           <button
-            data-testid={`wrong-answer-${index}`}
+            data-testid={`wrong-answer`}
             onClick={() => this.setState({ answers: true })}
           >
             {response}
@@ -129,8 +131,8 @@ class Game extends Component {
       <div>
         <button
           disabled
-          style={{ borderColor: 'rgb(255, 0, 0)' }}
-          data-testid={`wrong-answer-${index}`}
+          style={{ border: '3px solid rgb(255, 0, 0)' }}
+          data-testid={`wrong-answer}`}
         >
           {response}
         </button>

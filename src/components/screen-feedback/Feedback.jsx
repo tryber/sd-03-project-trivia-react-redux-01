@@ -11,10 +11,15 @@ class Feedback extends Component {
     return (
       <div>
         <Header />
-        {num <= 3 ? <h1>Podia ser melhor...</h1> : <h1>Mandou bem!</h1>}
+        {num <= 3 ?
+         <h1><span data-testid="feedback-text">Podia ser melhor...</span></h1>
+        :
+         <h1><span data-testid="feedback-text">Mandou bem!</span></h1>}
         {`Você acertou ${num} questões!
           Um total de ${score} pontos!`}
-        <button><Link to="/hanking">VER RANKING</Link></button>
+        <button data-testid="btn-ranking">
+          <Link to="/hanking">VER RANKING</Link>
+        </button>
         <Link to="/">
           <button
             data-testid="btn-play-again"
