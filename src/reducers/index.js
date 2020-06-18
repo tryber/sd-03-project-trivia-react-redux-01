@@ -1,10 +1,10 @@
-import { combineReducers } from 'redux';
-import tokenAndQuestions from '../reducers/r_tokenAndQuestions';
-import timer from '../reducers/r_timer';
+import { combineReducers} from 'redux';
+import reducerQuestions from '../reducers/reducerQuestions';
+/* import reducerRanking from ''; */
 
-const rootReducers = combineReducers({
-  tokenAndQuestions,
-  timer,
+const rootReducer = combineReducers({
+  reducerQuestions,
+  /* reducerRanking, */
 });
 
-export default rootReducers;
+export default rootReducer;
