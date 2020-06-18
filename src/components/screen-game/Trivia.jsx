@@ -29,9 +29,10 @@ class Game extends Component {
   componentDidMount() {
     const { requestApiToken, requestApiQuestions } = this.props;
     requestApiToken()
-      .then(({ token }) => { localStorage.setItem('token', token.token);
-      requestApiQuestions(localStorage.getItem('token'));
-    });
+      .then(({ token }) => {
+        localStorage.setItem('token', token.token);
+        requestApiQuestions(localStorage.getItem('token'));
+      });
 
    // requestApiQuestions(localStorage.getItem('token')).then(console.log('xablau nesse cypress'));
     // .then(requestApiQuestions(localStorage.getItem('token')));
@@ -115,10 +116,10 @@ class Game extends Component {
     const alternatives = dataQuestions[this.state.questionIndex];
     const { correct_answer: correct, incorrect_answers: incorrect } = alternatives;
     if (!this.state.answers) {
-      const incorrectBtn = incorrect.map((response, index) => (
+      const incorrectBtn = incorrect.map((response) => (
         <div>
           <button
-            data-testid={`wrong-answer`}
+            data-testid="wrong-answer"
             onClick={() => this.setState({ answers: true })}
           >
             {response}
@@ -127,12 +128,12 @@ class Game extends Component {
       ));
       return this.responseTrue(incorrectBtn, correct);
     }
-    const incorrectBtn = incorrect.map((response, index) => (
+    const incorrectBtn = incorrect.map((response) => (
       <div>
         <button
           disabled
           style={{ border: '3px solid rgb(255, 0, 0)' }}
-          data-testid={`wrong-answer}`}
+          data-testid="wrong-answer"
         >
           {response}
         </button>

@@ -12,9 +12,9 @@ class Feedback extends Component {
       <div>
         <Header />
         {num <= 3 ?
-         <h1><span data-testid="feedback-text">Podia ser melhor...</span></h1>
+          <h1><span data-testid="feedback-text">Podia ser melhor...</span></h1>
         :
-         <h1><span data-testid="feedback-text">Mandou bem!</span></h1>}
+          <h1><span data-testid="feedback-text">Mandou bem!</span></h1>}
         {`Você acertou ${num} questões!
           Um total de ${score} pontos!`}
         <button data-testid="btn-ranking">
