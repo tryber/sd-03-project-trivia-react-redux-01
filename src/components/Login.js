@@ -56,16 +56,16 @@ class login extends React.Component {
   buttonPlay(email, name) {
     return email === '' || name === '' ? (
       <button
-        data-tesid="btn-play"
+        data-testid="btn-play"
         type="button"
         disabled
       >JOGAR
       </button>
     ) :
       (
-        <Link to="/gameScreen">
+        <Link to="/GameScreen">
           <button
-            data-tesid="btn-play"
+            data-testid="btn-play"
             type="button"
             onClick={() => this.statePlayerLocal()}
           >JOGAR

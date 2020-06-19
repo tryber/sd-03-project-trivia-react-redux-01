@@ -18,7 +18,7 @@ const getError = (error) => ({
   error,
 });
 
-export function dispatchAction (token){
+export function fetchQuestions (token){
   return (dispatch) => {
     dispatch(requestApiQuestions());
     return getQuestion(token)

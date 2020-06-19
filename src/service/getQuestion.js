@@ -1,10 +1,9 @@
-const tokenQuest = async (token) => {
+
+const tokenQuest = (token) => {
   const URL = `https://opentdb.com/api.php?amount=5&token=${token}`;
-  try {
-    const response = await fetch(URL);
-    const data = await response.json();
-    return data;
-  } catch (error) { return error };
-}
+  return fetch(URL).then((response) =>
+    response.json().then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))),
+  )
+};
 
 export default tokenQuest;
