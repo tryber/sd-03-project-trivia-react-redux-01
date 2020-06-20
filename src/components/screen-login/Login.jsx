@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 /* import PropTypes from 'prop-types'; */
 
 import './layout/Login.css';
-import { getTokenUser, getResultsQuestions, getNameEmail } from '../../actions/a-token';
+import { getNameEmail } from '../../actions/a-token';
 
 class Login extends Component {
   constructor(props) {
@@ -18,6 +18,7 @@ class Login extends Component {
     this.inputNameEmail = this.inputNameEmail.bind(this);
     this.buttonDisabled = this.buttonDisabled.bind(this);
     this.buttonPlay = this.buttonPlay.bind(this);
+    this.saveInfo = this.saveInfo.bind(this);
   }
 
   inputNameEmail(name, email) {
@@ -42,28 +43,36 @@ class Login extends Component {
     );
   }
 
-  buttonDisabled(tokenPlayer) {
+  saveInfo() {
+    const { email, name } = this.state;
+    localStorage.setItem('state', JSON.stringify({
+      player: {
+        name, assertions: 0, score: 0, gravatarEmail: email,
+      },
+    }));
+  }
+
+  buttonDisabled() {
     console.log(this);
     return (
       <button
         className="buttonPlay"
         type="button"
         data-testid="btn-play"
-        onClick={() => tokenPlayer()}
         disabled
       >Jogar
       </button>
     );
   }
 
-  buttonPlay(tokenPlayer) {
+  buttonPlay() {
     console.log(this);
     return (
       <button
         className="buttonPlay"
         type="button"
         data-testid="btn-play"
-        onClick={() => tokenPlayer()}
+        onClick={() => this.saveInfo()}
       >
         Jogar
       </button>
@@ -76,15 +85,16 @@ class Login extends Component {
     });
   }
 
+
   render() {
+    // const tokenPlayer = async () => {
+    //   const token = await this.props.requestApiToken();
+    //   const questions = this.props.requestApiQuestions();
+    //   console.log(questions);
+    //   localStorage.setItem('token', token.token);
+    //   this.props.requestNameEmail(name, email);
+    // };
     const { name, email } = this.state;
-    const tokenPlayer = async () => {
-      const token = await this.props.requestApiToken();
-      const questions = this.props.requestApiQuestions();
-      console.log(questions);
-      localStorage.setItem('token', token.token);
-      this.props.requestNameEmail(name, email);
-    };
 
     return (
       <div className="cardText">
@@ -92,9 +102,13 @@ class Login extends Component {
           {this.inputNameEmail(name, email)}
           {
             name === '' || email === '' ?
-                this.buttonDisabled(tokenPlayer)
+              <Link to="/game">
+                {this.buttonDisabled()}
+              </Link>
               :
-                <Link to="/game">{this.buttonPlay(tokenPlayer)}</Link>
+              <Link to="/game">
+                {this.buttonPlay()}
+              </Link>
           }
           <Link to="/config">
             <button data-testid="btn-settings" className="config">Configurações</button>
@@ -106,8 +120,8 @@ class Login extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  requestApiToken: () => dispatch(getTokenUser()),
-  requestApiQuestions: () => dispatch(getResultsQuestions()),
+  // requestApiToken: () => dispatch(getTokenUser()),
+  // requestApiQuestions: (token) => dispatch(getResultsQuestions(token)),
   requestNameEmail: (name, email) => dispatch(getNameEmail(name, email)),
 });
 

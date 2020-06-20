@@ -10,7 +10,7 @@ class Hanking extends Component {
   render() {
     return (
       <div className="card">
-        <h1>Hanking</h1>
+        <h1 data-testid="ranking-title">Hanking</h1>
         {xablau.map((img, name, ponts, index) => (
           <ul className="hank-list">
             <li>{img}</li>

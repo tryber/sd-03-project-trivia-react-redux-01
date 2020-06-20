@@ -7,6 +7,7 @@ import { timerCourse } from '../../actions/a_timer';
 import Timer from '../screen-game/Timer';
 import '../screen-game/cardgame.css';
 import Header from '../header/Header';
+import { getTokenUser, getResultsQuestions } from '../../actions/a-token';
 
 const CryptoJS = require('crypto-js');
 
@@ -16,12 +17,69 @@ class Game extends Component {
     this.state = {
       questionIndex: 0,
       answers: false,
+      counter: 0,
+      turn: 0,
     };
 
     this.correctAnswer = this.correctAnswer.bind(this);
     this.renderQuestions = this.renderQuestions.bind(this);
     this.clicktNextQuestions = this.clicktNextQuestions.bind(this);
   }
+
+  componentDidMount() {
+    const { requestApiToken, requestApiQuestions } = this.props;
+    requestApiToken()
+      .then(({ token }) => {
+        localStorage.setItem('token', token.token);
+        requestApiQuestions(localStorage.getItem('token'));
+      });
+
+   // requestApiQuestions(localStorage.getItem('token')).then(console.log('xablau nesse cypress'));
+    // .then(requestApiQuestions(localStorage.getItem('token')));
+    // console.log(requestApiQuestions())
+  }
+
+  // countDownTimer() {
+  //   const timer = () => setInterval(() => {
+  //     const { counter, answered } = this.state;
+  //     switch (true) {
+  //       case counter > 0 && !answered:
+  //         return this.setState((prevState) => ({ counter: prevState.counter - 1 }));
+  //       case !answered && counter === 0:
+  //         this.setState({ answered: true });
+  //         this.hitAnswer('wrong');
+  //         return clearInterval(timer);
+  //       default:
+  //         return clearInterval(timer);
+  //     }
+  //   }, 1000);
+  //   return timer;
+  // }
+
+  // hitAnswer(answer) {
+  //   this.setState({ answered: true });
+  //   if (answer !== 'correct') return false;
+  //   const { state: { counter, turn }, props: { questions } } = this;
+  //   const difficulty = (dif) => {
+  //     switch (true) {
+  //       case dif === 'hard':
+  //         return 3;
+  //       case dif === 'medium':
+  //         return 2;
+  //       case dif === 'easy':
+  //         return 1;
+  //       default:
+  //         return -10;
+  //     }
+  //   };
+  //   const questionLevel = questions[turn].difficulty;
+  //   const points = 10 + (counter * difficulty(questionLevel));
+  //   const { player } = JSON.parse(localStorage.getItem('state'));
+  //   player.assertions = Number(player.assertions) + 1;
+  //   player.score += points;
+  //   return localStorage.setItem('state', JSON.stringify({ player }));
+  // }
+
 
   clicktNextQuestions() {
     return this.setState((state) => ({ questionIndex: state.questionIndex + 1, answers: false }));
@@ -32,7 +90,7 @@ class Game extends Component {
       ...incorrectBtn,
       <button
         onClick={() => this.setState({ answers: true })}
-        type="correct-answer"
+        data-testid="correct-answer"
       >
         {correct}
       </button>,
@@ -44,9 +102,9 @@ class Game extends Component {
     return [
       ...incorrectBtn,
       <button
-        style={{ borderColor: 'rgb(6, 240, 15)' }}
+        style={{ border: '3px solid rgb(6, 240, 15)' }}
         disabled
-        type="correct-answer"
+        data-testid="correct-answer"
       >
         {correct}
       </button>,
@@ -58,10 +116,10 @@ class Game extends Component {
     const alternatives = dataQuestions[this.state.questionIndex];
     const { correct_answer: correct, incorrect_answers: incorrect } = alternatives;
     if (!this.state.answers) {
-      const incorrectBtn = incorrect.map((response, index) => (
+      const incorrectBtn = incorrect.map((response) => (
         <div>
           <button
-            data-testid={`wrong-answer-${index}`}
+            data-testid="wrong-answer"
             onClick={() => this.setState({ answers: true })}
           >
             {response}
@@ -70,12 +128,12 @@ class Game extends Component {
       ));
       return this.responseTrue(incorrectBtn, correct);
     }
-    const incorrectBtn = incorrect.map((response, index) => (
+    const incorrectBtn = incorrect.map((response) => (
       <div>
         <button
           disabled
-          style={{ borderColor: 'rgb(255, 0, 0)' }}
-          data-testid={`wrong-answer-${index}`}
+          style={{ border: '3px solid rgb(255, 0, 0)' }}
+          data-testid="wrong-answer"
         >
           {response}
         </button>
@@ -87,12 +145,13 @@ class Game extends Component {
   renderQuestions(name) {
     const { dataQuestions } = this.props;
     const eachQuestions = dataQuestions[this.state.questionIndex];
-    if (dataQuestions.length === 0) return <div>Loading...</div>;
+    if (dataQuestions.length <= 0) return <div>Loading...</div>;
     if (eachQuestions == null) return <Redirect to="/feedback" />;
     console.log(dataQuestions);
     const hash = CryptoJS.MD5(this.props.email);
     return (
       <div>
+        <p data-testid="question-category">engano</p>
         <div className="boxQuestion">
           <img src={`https://www.gravatar.com/avatar/${hash}`} alt="ImgGravatar" />
           <div className="boxWithPlayerName">{name}</div>
@@ -140,6 +199,8 @@ const mapState = (state) => ({
 });
 
 const mapDispatch = (dispatch) => ({
+  requestApiToken: () => dispatch(getTokenUser()),
+  requestApiQuestions: (token) => dispatch(getResultsQuestions(token)),
   setTime: (timer) => dispatch(timerCourse(timer)),
 });
 
@@ -150,6 +211,8 @@ Game.propTypes = {
     question: PropTypes.string,
   }).isRequired,
   email: PropTypes.string.isRequired,
+  requestApiQuestions: PropTypes.func.isRequired,
+  requestApiToken: PropTypes.func.isRequired,
 };
 
 export default connect(mapState, mapDispatch)(Game);
