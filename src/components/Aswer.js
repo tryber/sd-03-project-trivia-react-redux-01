@@ -86,8 +86,6 @@ class Aswer extends React.Component {
 
 export default Aswer;
 
-data, changeState, selected
-
 Aswer.propTypes = {
   data: propTypes.arrayOf(propTypes.object).isRequired,
   changeState: propTypes.func.isRequired,
