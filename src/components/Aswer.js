@@ -1,6 +1,7 @@
 import React from 'react';
 import randomQuestion from './RandomQuestion';
 import './correctCss.css';
+import propTypes from 'prop-types';
 
 const getClasses = (selected, result, correctAnswer) => {
   if (selected) {
@@ -30,7 +31,7 @@ class Aswer extends React.Component {
   getButtons() {
     const { data, changeState, selected } = this.props;
     if (data) {
-      const { correct_answer: correctAnswer, difficulty } = data;
+      const { correct_answer: correctAnswer } = data;
       const { randomAswer } = this.state;
       if (randomAswer) {
         return (
@@ -47,11 +48,11 @@ class Aswer extends React.Component {
                   onClick={changeState}
                   disabled={selected}
                 >{resultQ}</button>
-              )
+              );
             })}
           </div>
-        )
-      };
+        );
+      }
       return false;
     }
     return false;
@@ -68,7 +69,7 @@ class Aswer extends React.Component {
       const answers = [correctAnswer, ...incorrectAnswers];
       if (!randomAswer || currentQuestion !== data.question) {
         const randomized = randomQuestion(answers);
-        this.setState({
+        return this.setState({
           currentQuestion: data.question,
           randomAswer: randomized,
         });
@@ -81,6 +82,14 @@ class Aswer extends React.Component {
   render() {
     return <div>{this.getButtons()}</div>;
   }
-};
+}
 
 export default Aswer;
+
+data, changeState, selected
+
+Aswer.propTypes = {
+  data: propTypes.arrayOf(propTypes.object).isRequired,
+  changeState: propTypes.func.isRequired,
+  selected: propTypes.bool.isRequired,
+}

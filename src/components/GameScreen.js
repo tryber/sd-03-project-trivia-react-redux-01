@@ -14,7 +14,7 @@ class GameScreen extends React.Component {
       selected: false,
       proximoTurno: 0,
       timer: 30,
-    }
+    };
     this.nextQuest = this.nextQuest.bind(this);
     this.endGame = this.endGame.bind(this);
     this.changeState = this.changeState.bind(this);
@@ -89,6 +89,12 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchQuestion: (token) => dispatch(fetchQuestions(token)),
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameScreen);
+
+GameScreen.propTypes = {
+data: propTypes.arrayOf(propTypes.object).isRequired,
+history: propTypes.func.isRequired,
+
+}

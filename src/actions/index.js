@@ -18,14 +18,13 @@ const getError = (error) => ({
   error,
 });
 
-export function fetchQuestions (token){
+export function fetchQuestions(token) {
   return (dispatch) => {
     dispatch(requestApiQuestions());
     return getQuestion(token)
-    .then(
-      (data) => dispatch(getResult(data)),
-      (error) => dispatch(getError(error)),
-    );
+      .then(
+        (data) => dispatch(getResult(data)),
+        (error) => dispatch(getError(error)),
+      );
   };
 }
-

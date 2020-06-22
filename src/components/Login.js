@@ -28,29 +28,8 @@ class login extends React.Component {
         assertions: 0,
         score: 0,
         gravatarEmail: email,
-      }
+      },
     }));
-  }
-
-  renderInput(email, name) {
-    return (
-      <div>
-        <input
-          placeholder="Digite seu Email"
-          data-testid="input-gravatar-email"
-          type="email"
-          value={email}
-          onChange={(event) => this.saveState(event, 'email')}
-        />
-        <input
-        placeholder="Digite seu Nome/Apelido"
-          data-testid="input-player-name"
-          type="text"
-          value={name}
-          onChange={(event) => this.saveState(event, 'name')}
-        />
-      </div>
-    );
   }
 
   buttonPlay(email, name) {
@@ -74,14 +53,38 @@ class login extends React.Component {
       );
   }
 
+  renderInput(email, name) {
+    return (
+      <div>
+        <input
+          placeholder="Digite seu Email"
+          data-testid="input-gravatar-email"
+          type="email"
+          value={email}
+          onChange={(event) => this.saveState(event, 'email')}
+        />
+        <input
+          placeholder="Nome/Apelido"
+          data-testid="input-player-name"
+          type="text"
+          value={name}
+          onChange={(event) => this.saveState(event, 'name')}
+        />
+      </div>
+    );
+  }
+
   render() {
     const { name, email } = this.state;
     return (
       <div>
         {this.renderInput(email, name)}
         {this.buttonPlay(email, name)}
+        <Link to="/config">
+          <button data-testid="btn-settings">Configurações</button>
+        </Link>
       </div>
-    )
+    );
   }
 }
 
