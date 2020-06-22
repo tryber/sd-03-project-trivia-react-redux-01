@@ -17,6 +17,6 @@ const Header = () => {
       <p data-testid="header-score">{score}</p>
     </header>
   );
-}
+};
 
 export default Header;

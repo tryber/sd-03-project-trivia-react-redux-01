@@ -10,13 +10,14 @@ const GetQuestions = ({ data }) => {
         <p data-testid="question-text">{question}</p>
       </div>
     )
-  };
+  }
   return false;
-}
+};
 
 export default GetQuestions;
 
 GetQuestions.propTypes = {
-  questoes: PropTypes.string.isRequired,
-  categoria: PropTypes.string.isRequired,
-}
+/*   questoes: PropTypes.string.isRequired,
+  categoria: PropTypes.string.isRequired, */
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+};

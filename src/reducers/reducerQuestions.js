@@ -4,7 +4,7 @@ const INITIAL_STATE = {
   isFetching: false,
   data: [],
   error: '',
-}
+};
 
 const reducerQuestions = (state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -30,6 +30,6 @@ const reducerQuestions = (state = INITIAL_STATE, action) => {
       return state;
   }
 
-}
+};
 
 export default reducerQuestions;

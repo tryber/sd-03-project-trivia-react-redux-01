@@ -1,5 +1,5 @@
-import { combineReducers} from 'redux';
-import reducerQuestions from '../reducers/reducerQuestions';
+import { combineReducers } from 'redux';
+import reducerQuestions from './reducerQuestions';
 /* import reducerRanking from ''; */
 
 const rootReducer = combineReducers({
