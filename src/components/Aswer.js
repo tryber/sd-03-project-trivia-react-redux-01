@@ -1,7 +1,7 @@
 import React from 'react';
 import randomQuestion from './RandomQuestion';
-import './correctCss.css';
 import propTypes from 'prop-types';
+import './correctCss.css';
 
 const getClasses = (selected, result, correctAnswer) => {
   if (selected) {
@@ -90,4 +90,4 @@ Aswer.propTypes = {
   data: propTypes.arrayOf(propTypes.object).isRequired,
   changeState: propTypes.func.isRequired,
   selected: propTypes.bool.isRequired,
-}
+};
