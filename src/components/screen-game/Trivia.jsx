@@ -8,6 +8,8 @@ import Timer from '../screen-game/Timer';
 import '../screen-game/cardgame.css';
 import Header from '../header/Header';
 import { getTokenUser, getResultsQuestions } from '../../actions/a-token';
+import { scoreCorrect } from '../../actions/a_questions';
+
 
 const CryptoJS = require('crypto-js');
 
@@ -24,6 +26,8 @@ class Game extends Component {
     this.correctAnswer = this.correctAnswer.bind(this);
     this.renderQuestions = this.renderQuestions.bind(this);
     this.clicktNextQuestions = this.clicktNextQuestions.bind(this);
+    this.getPoints = this.getPoints.bind(this);
+    this.getDifficulty = this.getDifficulty.bind(this);
   }
 
   componentDidMount() {
@@ -37,6 +41,11 @@ class Game extends Component {
    // requestApiQuestions(localStorage.getItem('token')).then(console.log('xablau nesse cypress'));
     // .then(requestApiQuestions(localStorage.getItem('token')));
     // console.log(requestApiQuestions())
+  }
+
+  componentDidUpdate() {
+    if(this.props.timer === 0) {this.setState({answers:true})
+    this.props.setTime(30)};
   }
 
   // countDownTimer() {
@@ -89,12 +98,35 @@ class Game extends Component {
     return [
       ...incorrectBtn,
       <button
-        onClick={() => this.setState({ answers: true })}
+        onClick={() => this.getPoints()}
         data-testid="correct-answer"
       >
         {correct}
       </button>,
-    ].sort(() => Math.floor(Math.random() * 3) - 1);
+    ]//.sort(() => Math.floor(Math.random() * 3) - 1);
+  }
+
+  getDifficulty() {
+    const dif = this.props.dataQuestions[this.state.questionIndex].difficulty;
+    console.log(dif)
+    switch (dif) {
+             case 'hard':
+               return 3;
+             case 'medium':
+               return 2;
+             case 'easy':
+               return 1;
+             default:
+               return -10;
+    }
+  }
+
+  getPoints() {
+    const data = JSON.parse(localStorage.getItem('state')).player;
+    data.assertions++;
+    data.score += this.getDifficulty() + 10;
+    localStorage.setItem('state',JSON.stringify({player: data}));
+    this.setState({ answers: true });
   }
 
   responseFalse(incorrectBtn, correct) {
@@ -108,7 +140,7 @@ class Game extends Component {
       >
         {correct}
       </button>,
-    ].sort(() => Math.floor(Math.random() * 3) - 1);
+    ]//.sort(() => Math.floor(Math.random() * 3) - 1);
   }
 
   correctAnswer() {
@@ -196,20 +228,22 @@ const mapState = (state) => ({
   dataQuestions: state.tokenAndQuestions.data,
   name: state.tokenAndQuestions.name,
   email: state.tokenAndQuestions.email,
+  timer: state.timer.time,
 });
 
 const mapDispatch = (dispatch) => ({
   requestApiToken: () => dispatch(getTokenUser()),
   requestApiQuestions: (token) => dispatch(getResultsQuestions(token)),
   setTime: (timer) => dispatch(timerCourse(timer)),
+  setScore: (timer,difficulty) => dispatch(scoreCorrect(timer,difficulty)),
 });
 
 Game.propTypes = {
-  dataQuestions: PropTypes.shape({
+  dataQuestions: PropTypes.arrayOf(PropTypes.shape({
     category: PropTypes.string,
     difficulty: PropTypes.string,
     question: PropTypes.string,
-  }).isRequired,
+  })).isRequired,
   email: PropTypes.string.isRequired,
   requestApiQuestions: PropTypes.func.isRequired,
   requestApiToken: PropTypes.func.isRequired,
