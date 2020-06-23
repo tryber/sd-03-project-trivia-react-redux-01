@@ -6,17 +6,16 @@ import Header from '../header/Header';
 
 class Feedback extends Component {
   render() {
-    const num = this.props.correct;
-    const score = this.props.score;
+    const { correct, score } = this.props;
     return (
       <div>
         <Header />
-        {num <= 3 ?
+        {correct < 3 ?
           <h1><span data-testid="feedback-text">Podia ser melhor...</span></h1>
         :
           <h1><span data-testid="feedback-text">Mandou bem!</span></h1>}
-        {`Você acertou ${num} questões!
-          Um total de ${score} pontos!`}
+        <p>Você acertou <span data-testid="feedback-total-question">{correct}</span> questões!</p>
+        <p>Um total de <span data-testid="feedback-total-score">{score}</span> pontos!</p>
         <button data-testid="btn-ranking">
           <Link to="/hanking">VER RANKING</Link>
         </button>
@@ -32,9 +31,9 @@ class Feedback extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  correct: state.correct,
-  score: state.score,
+const mapStateToProps = () => ({
+  correct: parseInt(JSON.parse(localStorage.getItem('state')).player.assertions, 10),
+  score: JSON.parse(localStorage.getItem('state')).player.score,
 });
 
 Feedback.propTypes = {

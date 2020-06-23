@@ -1,15 +1,28 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Proptypes from 'prop-types';
 
 class Header extends Component {
   render() {
+    const { name, score } = this.props;
     return (
       <div>
         <header data-testid="header-profile-picture" />
-        <div data-testid="header-player-name">Nome da pessoa</div>
-        <div data-testid="header-score">0</div>
+        <div data-testid="header-player-name">{name}</div>
+        <div data-testid="header-score">{score}</div>
       </div>
     );
   }
 }
 
-export default Header;
+const mapStateToProps = () => ({
+  score: JSON.parse(localStorage.getItem('state')).player.score || 0,
+  name: JSON.parse(localStorage.getItem('state')).player.name || 'Nome da pessoa',
+});
+
+Header.propTypes = {
+  name: Proptypes.string.isRequired,
+  score: Proptypes.number.isRequired,
+};
+
+export default connect(mapStateToProps)(Header);
