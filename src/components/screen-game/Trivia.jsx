@@ -39,18 +39,6 @@ class Game extends Component {
       });
   }
 
-  responseTrue(incorrectBtn, correct) {
-    return [
-      ...incorrectBtn,
-      <button
-        onClick={() => this.getPoints()}
-        data-testid="correct-answer"
-      >
-        {correct}
-      </button>,
-    ];
-  }
-
   getDifficulty() {
     const dif = this.props.dataQuestions[this.state.questionIndex].difficulty;
     switch (dif) {
@@ -71,6 +59,18 @@ class Game extends Component {
     data.score += this.getDifficulty() + 10;
     localStorage.setItem('state', JSON.stringify({ player: data }));
     this.setState({ answers: true });
+  }
+
+  responseTrue(incorrectBtn, correct) {
+    return [
+      ...incorrectBtn,
+      <button
+        onClick={() => this.getPoints()}
+        data-testid="correct-answer"
+      >
+        {correct}
+      </button>,
+    ];
   }
 
   clicktNextQuestions() {
