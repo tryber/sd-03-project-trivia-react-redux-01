@@ -15,8 +15,8 @@ class Header extends Component {
 }
 
 const mapStateToProps = (state) => ({
-score: JSON.parse(localStorage.getItem('state'))?.player?.score || 0,
-name: JSON.parse(localStorage.getItem('state'))?.player?.name || 'Nome da pessoa',
+score: JSON.parse(localStorage.getItem('state')).player?.score || 0,
+name: JSON.parse(localStorage.getItem('state')).player?.name || 'Nome da pessoa',
 });
 
 export default connect(mapStateToProps)(Header);

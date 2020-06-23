@@ -32,7 +32,7 @@ class Feedback extends Component {
 }
 
 const mapStateToProps = () => ({
-  correct: parseInt(JSON.parse(localStorage.getItem('state')).player.assertions),
+  correct: parseInt(JSON.parse(localStorage.getItem('state')).player.assertions, 10),
   score: JSON.parse(localStorage.getItem('state')).player.score,
 });
 

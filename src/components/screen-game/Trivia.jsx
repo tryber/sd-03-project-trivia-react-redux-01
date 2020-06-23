@@ -39,17 +39,6 @@ class Game extends Component {
       });
   }
 
-  componentDidUpdate() {
-    if (this.props.timer === 0) {
-      this.setState({ answers: true });
-      this.props.setTime(30);
-    }
-  }
-
-  clicktNextQuestions() {
-    return this.setState((state) => ({ questionIndex: state.questionIndex + 1, answers: false }));
-  }
-
   responseTrue(incorrectBtn, correct) {
     return [
       ...incorrectBtn,
@@ -82,6 +71,10 @@ class Game extends Component {
     data.score += this.getDifficulty() + 10;
     localStorage.setItem('state', JSON.stringify({ player: data }));
     this.setState({ answers: true });
+  }
+
+  clicktNextQuestions() {
+    return this.setState((state) => ({ questionIndex: state.questionIndex + 1, answers: false }));
   }
 
   responseFalse(incorrectBtn, correct) {
@@ -170,6 +163,10 @@ class Game extends Component {
   }
 
   render() {
+    if (this.props.timer === 0) {
+      this.setState({ answers: true });
+      this.props.setTime(30);
+    }
     return (
       <div>
         <Header />
