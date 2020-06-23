@@ -37,58 +37,14 @@ class Game extends Component {
         localStorage.setItem('token', token.token);
         requestApiQuestions(localStorage.getItem('token'));
       });
-
-   // requestApiQuestions(localStorage.getItem('token')).then(console.log('xablau nesse cypress'));
-    // .then(requestApiQuestions(localStorage.getItem('token')));
-    // console.log(requestApiQuestions())
   }
 
   componentDidUpdate() {
-    if(this.props.timer === 0) {this.setState({answers:true})
-    this.props.setTime(30)};
+    if (this.props.timer === 0) {
+      this.setState({ answers: true });
+      this.props.setTime(30);
+    }
   }
-
-  // countDownTimer() {
-  //   const timer = () => setInterval(() => {
-  //     const { counter, answered } = this.state;
-  //     switch (true) {
-  //       case counter > 0 && !answered:
-  //         return this.setState((prevState) => ({ counter: prevState.counter - 1 }));
-  //       case !answered && counter === 0:
-  //         this.setState({ answered: true });
-  //         this.hitAnswer('wrong');
-  //         return clearInterval(timer);
-  //       default:
-  //         return clearInterval(timer);
-  //     }
-  //   }, 1000);
-  //   return timer;
-  // }
-
-  // hitAnswer(answer) {
-  //   this.setState({ answered: true });
-  //   if (answer !== 'correct') return false;
-  //   const { state: { counter, turn }, props: { questions } } = this;
-  //   const difficulty = (dif) => {
-  //     switch (true) {
-  //       case dif === 'hard':
-  //         return 3;
-  //       case dif === 'medium':
-  //         return 2;
-  //       case dif === 'easy':
-  //         return 1;
-  //       default:
-  //         return -10;
-  //     }
-  //   };
-  //   const questionLevel = questions[turn].difficulty;
-  //   const points = 10 + (counter * difficulty(questionLevel));
-  //   const { player } = JSON.parse(localStorage.getItem('state'));
-  //   player.assertions = Number(player.assertions) + 1;
-  //   player.score += points;
-  //   return localStorage.setItem('state', JSON.stringify({ player }));
-  // }
-
 
   clicktNextQuestions() {
     return this.setState((state) => ({ questionIndex: state.questionIndex + 1, answers: false }));
@@ -103,29 +59,28 @@ class Game extends Component {
       >
         {correct}
       </button>,
-    ]//.sort(() => Math.floor(Math.random() * 3) - 1);
+    ];
   }
 
   getDifficulty() {
     const dif = this.props.dataQuestions[this.state.questionIndex].difficulty;
-    console.log(dif)
     switch (dif) {
-             case 'hard':
-               return 3;
-             case 'medium':
-               return 2;
-             case 'easy':
-               return 1;
-             default:
-               return -10;
+      case 'hard':
+        return 3;
+      case 'medium':
+        return 2;
+      case 'easy':
+        return 1;
+      default:
+        return -10;
     }
   }
 
   getPoints() {
     const data = JSON.parse(localStorage.getItem('state')).player;
-    data.assertions++;
+    data.assertions += data.assertions;
     data.score += this.getDifficulty() + 10;
-    localStorage.setItem('state',JSON.stringify({player: data}));
+    localStorage.setItem('state', JSON.stringify({ player: data }));
     this.setState({ answers: true });
   }
 
@@ -140,7 +95,7 @@ class Game extends Component {
       >
         {correct}
       </button>,
-    ]//.sort(() => Math.floor(Math.random() * 3) - 1);
+    ];
   }
 
   correctAnswer() {
@@ -235,7 +190,7 @@ const mapDispatch = (dispatch) => ({
   requestApiToken: () => dispatch(getTokenUser()),
   requestApiQuestions: (token) => dispatch(getResultsQuestions(token)),
   setTime: (timer) => dispatch(timerCourse(timer)),
-  setScore: (timer,difficulty) => dispatch(scoreCorrect(timer,difficulty)),
+  setScore: (timer, difficulty) => dispatch(scoreCorrect(timer, difficulty)),
 });
 
 Game.propTypes = {
@@ -247,6 +202,8 @@ Game.propTypes = {
   email: PropTypes.string.isRequired,
   requestApiQuestions: PropTypes.func.isRequired,
   requestApiToken: PropTypes.func.isRequired,
+  timer: PropTypes.number.isRequired,
+  setTime: PropTypes.func.isRequired,
 };
 
 export default connect(mapState, mapDispatch)(Game);
